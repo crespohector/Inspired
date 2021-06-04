@@ -1,6 +1,7 @@
 // constants
 const GET_QUOTE = "quote/GET_QUOTE";
 const ADD_QUOTE = "quote/ADD_QUOTE";
+const REMOVE_QUOTE = "quote/REMOVE_QUOTE";
 
 // actions
 const getQuote = (data) => ({
@@ -10,6 +11,11 @@ const getQuote = (data) => ({
 
 const addQuote = (data) => ({
     type: ADD_QUOTE,
+    data
+})
+
+const removeQuote = (data) => ({
+    type: REMOVE_QUOTE,
     data
 })
 
@@ -46,8 +52,37 @@ export const createQuote = (content, author, userId) => async (dispatch) => {
         })
     });
     const quote = await response.json();
-    console.log('-----------POST NEW QUOTE--------: ', quote);
+    // console.log('-----------POST NEW QUOTE--------: ', quote);
     dispatch(addQuote(quote))
+    return ;
+}
+
+//PUT: Edit a quote with the content, author, and quote id
+export const editQuote = (content, author, id) => async (dispatch) => {
+    const response = await fetch(`/api/quotes/${id}/`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            content,
+            author
+        })
+    });
+    const quote = await response.json();
+    // console.log('----------edit quote----------', quote)
+    dispatch(addQuote(quote))
+    return ;
+}
+
+//DELETE: delete a quote based on quote id
+export const deleteQuote = (id) => async (dispatch) => {
+    const response = await fetch(`/api/quotes/${id}/`, {
+        method: 'DELETE',
+    });
+    const quote = await response.json();
+    // console.log('----------DELETED QUOTE----------: ', quote)
+    dispatch(removeQuote(quote))
     return ;
 }
 
@@ -65,6 +100,11 @@ const quoteReducer = (state={}, action) => {
         case ADD_QUOTE:
             newState = {...state}
             newState[action.data['id']] = action.data
+            return newState;
+
+        case REMOVE_QUOTE:
+            newState = {...state};
+            delete newState[action.data.id];
             return newState;
 
         default:

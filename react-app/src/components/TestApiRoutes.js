@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {getQuotes, getQuotesByUser, createQuote} from "../store/quote"
+import {getQuotes, getQuotesByUser, createQuote, deleteQuote, editQuote} from "../store/quote"
+import {getCollections} from "../store/collection";
 
 function TestApiRoutes() {
     const dispatch = useDispatch();
@@ -13,6 +14,9 @@ function TestApiRoutes() {
         //     'anonymous',
         //     1,
         // ))
+        // dispatch(deleteQuote(105))
+        // dispatch(editQuote('This is edited quote', 'edited author', 106))
+        dispatch(getCollections(1))
     }, [dispatch])
 
 
