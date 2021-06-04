@@ -1,6 +1,7 @@
 // constants
 const GET_COLLECTION = "collection/GET_COLLECTION";
 const ADD_COLLECTION = "collection/ADD_COLLECTION";
+const REMOVE_COLLECTION = "collection/REMOVE_COLLECTION";
 
 // actions
 const getCollection = (data) => ({
@@ -10,6 +11,11 @@ const getCollection = (data) => ({
 
 const addCollection = (data) => ({
     type: ADD_COLLECTION,
+    data
+})
+
+const removeCollection = (data) => ({
+    type: REMOVE_COLLECTION,
     data
 })
 
@@ -54,6 +60,17 @@ export const editCollection = (title, id) => async (dispatch) => {
     return ;
 }
 
+//DELETE: delete a collection with the primary id
+export const deleteCollection = (id) => async (dispatch) => {
+    const response = await fetch(`/api/collections/${id}/`, {
+        method: 'DELETE',
+    });
+    const collection = await response.json();
+    // console.log('----deleted collection-------: ', collection);
+    dispatch(removeCollection(collection));
+    return ;
+}
+
 
 const collectionReducer = (state={}, action) => {
     let newState;
@@ -69,6 +86,11 @@ const collectionReducer = (state={}, action) => {
             newState = {...state}
             newState[action.data.id] = action.data
             return newState
+
+        case REMOVE_COLLECTION:
+            newState = {...state}
+            delete newState[action.data.id];
+            return newState;
 
         default:
             return state

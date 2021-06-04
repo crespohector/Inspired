@@ -43,3 +43,14 @@ def edit_collection(id):
     collection.title = form.data['title'] #this is from the form and its grabbing data from the front end json object
     db.session.commit()
     return collection.to_dict()
+
+
+@collection_routes.route('/<id>/', methods=["DELETE"])
+def delete_collection(id):
+    '''
+    DELETE remove a collection
+    '''
+    collection = Collection.query.get(id)
+    db.session.delete(collection)
+    db.session.commit()
+    return collection.to_dict()
