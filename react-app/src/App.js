@@ -9,6 +9,9 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 
+//Testing purposes
+import TestApiRoutes from "./components/TestApiRoutes";
+
 function App() {
   const user = useSelector(state => state.session.user)
   const [loaded, setLoaded] = useState(false);
@@ -44,6 +47,9 @@ function App() {
         <ProtectedRoute path="/" exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path="/test" exact={true}>
+          <TestApiRoutes />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
