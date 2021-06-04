@@ -30,5 +30,5 @@ def seed_collections_quotes():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_collections_quotes():
-    db.session.execute('TRUNCATE servers RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
