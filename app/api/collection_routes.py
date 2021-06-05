@@ -1,6 +1,8 @@
-from flask import Blueprint, session, request
+from flask import Blueprint, request
 from app.forms import CollectionForm
-from app.models import Collection, db
+from app.models import Collection, db, Quote
+# from flask_login import login_required, current_user We can add another @decorative
+#function @login_required invoked login_required.
 
 collection_routes = Blueprint('collection', __name__)
 
@@ -38,9 +40,8 @@ def edit_collection(id):
     PUT edit a collection
     '''
     form = CollectionForm()
-    #one was of grabbing data from the front end (json object) is by using flask wtf
     collection = Collection.query.get(id)
-    collection.title = form.data['title'] #this is from the form and its grabbing data from the front end json object
+    collection.title = form.data['title']
     db.session.commit()
     return collection.to_dict()
 
@@ -54,3 +55,35 @@ def delete_collection(id):
     db.session.delete(collection)
     db.session.commit()
     return collection.to_dict()
+
+#todo- GET, POST, DELETE a quote from a collection
+#we want to remove a quote from a specific collection
+@collection_routes.route('/<id>/quotes/')
+def collection_quotes(id):
+    '''
+    GET all quotes from a specific collection
+    '''
+    collection = Collection.query.get(id)
+    collection_quotes = collection.quotes
+    return {"collection_quote": [collection_quote.to_dict() for collection_quote in collection_quotes]}
+
+@collection_routes.route('/<id>/quotes/', methods=['POST'])
+def add_quote_to_collection(id):
+    '''
+    POST add a quote to a specific collection
+    '''
+    #If I would be creating an instance of the collection model therefore, i wouldn't be able
+    #to add the quote to a specific collection.
+    data = request.json
+
+    collection = Collection.query.get(id)
+    quote = Quote.query.get(data['quoteId'])
+
+    collection.quotes.append(quote)
+
+    db.session.add(collection)
+    db.session.commit()
+
+    return quote.to_dict()
+
+@
