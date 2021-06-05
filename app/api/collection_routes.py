@@ -80,10 +80,21 @@ def add_quote_to_collection(id):
     quote = Quote.query.get(data['quoteId'])
 
     collection.quotes.append(quote)
-
     db.session.add(collection)
     db.session.commit()
 
     return quote.to_dict()
 
-@
+@collection_routes.route('/<id>/quotes/', methods=['DELETE'])
+def remove_quote_from_collection(id):
+
+    data = request.json
+
+    collection = Collection.query.get(id)
+    quote = Quote.query.get(data['quoteId'])
+
+    collection.quotes.remove(quote)
+    db.session.add(collection)
+    db.session.commit()
+    
+    return quote.to_dict()

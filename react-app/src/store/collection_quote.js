@@ -1,6 +1,7 @@
 // constants
 const GET_COLLECTION_QUOTES = "collection_quote/GET_COLLECTION_QUOTES";
 const ADD_COLLECTION_QUOTE = "collection_quote/ADD_COLLECTION_QUOTE";
+const ROMOVE_COLLECTION_QUOTE = "collection_quote/ROMOVE_COLLECTION_QUOTE";
 
 // actions
 const getCollectionQuote = (data) => ({
@@ -13,6 +14,10 @@ const addCollectionQuote = (data) => ({
     data
 })
 
+const removeCollectionQuote = (data) => ({
+    type: ROMOVE_COLLECTION_QUOTE,
+    data
+})
 
 
 // thunk actions
@@ -41,6 +46,21 @@ export const createCollectionQuote = (collectionId, quoteId) => async (dispatch)
     return ;
 }
 
+//DELETE: remove a quote from a collection
+export const removeQuote = (collectionId, quoteId) => async (dispatch) => {
+    const response = await fetch(`/api/collections/${collectionId}/quotes/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({quoteId})
+    });
+    const quote = await response.json()
+    console.log('-----removed quote from collection------: ', quote)
+    dispatch(removeCollectionQuote(quote));
+    return ;
+}
+
 
 const collectionQuoteReducer = (state={}, action) => {
     let newState;
@@ -58,6 +78,11 @@ const collectionQuoteReducer = (state={}, action) => {
             newState[action.data.id] = action.data
             return newState;
 
+        case ROMOVE_COLLECTION_QUOTE:
+            newState = {...state}
+            delete newState[action.data.id];
+            return newState;
+            
         default:
             return state
     }
