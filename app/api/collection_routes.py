@@ -29,10 +29,6 @@ def create_collection(userId):
     db.session.commit()
     return collection.to_dict()
 
-    # NameError: name 'validation_errors_to_error_messages' is not defined
-        # for some reason this does not work? if form.validate_on_submit():
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 
 @collection_routes.route('/<id>', methods=["PUT"])
 def edit_collection(id):
@@ -56,8 +52,7 @@ def delete_collection(id):
     db.session.commit()
     return collection.to_dict()
 
-#todo- GET, POST, DELETE a quote from a collection
-#we want to remove a quote from a specific collection
+
 @collection_routes.route('/<id>/quotes/')
 def collection_quotes(id):
     '''
@@ -72,8 +67,6 @@ def add_quote_to_collection(id):
     '''
     POST add a quote to a specific collection
     '''
-    #If I would be creating an instance of the collection model therefore, i wouldn't be able
-    #to add the quote to a specific collection.
     data = request.json
 
     collection = Collection.query.get(id)
@@ -87,6 +80,9 @@ def add_quote_to_collection(id):
 
 @collection_routes.route('/<id>/quotes/', methods=['DELETE'])
 def remove_quote_from_collection(id):
+    '''
+    DELETE remove a quote from a collection
+    '''
 
     data = request.json
 
@@ -96,5 +92,5 @@ def remove_quote_from_collection(id):
     collection.quotes.remove(quote)
     db.session.add(collection)
     db.session.commit()
-    
+
     return quote.to_dict()
