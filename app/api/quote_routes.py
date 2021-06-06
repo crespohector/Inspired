@@ -1,4 +1,4 @@
-from flask import Blueprint, session, request
+from flask import Blueprint, request, jsonify
 from app.forms import QuoteForm
 from app.models import Quote, db
 
@@ -27,6 +27,8 @@ def create_quote(userId):
     '''
     POST create a quote based on user id
     '''
+    data = request.json
+
     form = QuoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -37,7 +39,9 @@ def create_quote(userId):
         )
         db.session.add(quote)
         db.session.commit()
-        return quote.to_dict()
+        # return quote.to_dict()
+        return jsonify(data)
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import quote from "./quote";
 import collection from "./collection";
+import collection_quote from './collection_quote';
 
 const rootReducer = combineReducers({
     session,
     quote,
     collection,
+    collection_quote
 });
 
 
