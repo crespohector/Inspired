@@ -1,5 +1,6 @@
 from .db import db
 from .collection_quote import collection_quote
+from .favorite import favorite
 
 class Quote(db.Model):
     __tablename__ = "quotes"
@@ -7,13 +8,16 @@ class Quote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(255), nullable=False)
     author = db.Column(db.String(150), default="anonymous", nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    users = db.relationship("User", back_populates="quotes")
+    owners = db.relationship("User", back_populates="quotes")
 
-    favorites = db.relationship("Favorite", back_populates="quotes")
+    users = db.relationship("User",
+    secondary=favorite,
+    back_populates="quotes"
+    )
 
     dislikes = db.relationship("Dislike", back_populates="quotes")
 
@@ -28,5 +32,5 @@ class Quote(db.Model):
             "id": self.id,
             "content": self.content,
             "author": self.author,
-            "user_id": self.user_id
+            "owner_id": self.owner_id
         }

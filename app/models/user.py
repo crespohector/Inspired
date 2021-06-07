@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .favorite import favorite
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -14,7 +15,10 @@ class User(db.Model, UserMixin):
 
   quotes = db.relationship("Quote", back_populates="users")
 
-  favorites = db.relationship("Favorite", back_populates="users")
+  quote_favorites = db.relationship("Quote",
+  secondary=favorite,
+  back_populates="users"
+  )
 
   dislikes = db.relationship("Dislike", back_populates="users")
 

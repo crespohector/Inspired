@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: eedd8db89d65
+Revision ID: a5a346a24d29
 Revises: 
-Create Date: 2021-06-03 17:28:39.386577
+Create Date: 2021-06-07 02:53:12.188639
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'eedd8db89d65'
+revision = 'a5a346a24d29'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,10 +40,10 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=255), nullable=False),
     sa.Column('author', sa.String(length=150), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('collections_quotes',
@@ -64,14 +64,11 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('favorites',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('quote_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('quote_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['quote_id'], ['quotes.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('user_id', 'quote_id')
     )
     # ### end Alembic commands ###
 

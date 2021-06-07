@@ -1,4 +1,4 @@
-from app.models import db, User, Collection, Quote
+from app.models import db, Collection, Quote
 
 # Adds a demo user, you can add other users here if you want
 def seed_collections_quotes():

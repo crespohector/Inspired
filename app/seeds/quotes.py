@@ -13,10 +13,8 @@ def seed_quotes():
         new_quote = Quote(content=quote['q'], author=quote['a'])
         db.session.add(new_quote)
 
-    # for i in range(20,31):
-        # print('--------------quote----------:', quotes[i]['q'])
     for i in range(5,16):
-        new_quote = Quote(content=quotes[i]['q'], author=quotes[i]['a'], user_id=1)
+        new_quote = Quote(content=quotes[i]['q'], author=quotes[i]['a'], owner_id=1)
         db.session.add(new_quote)
 
     db.session.commit()

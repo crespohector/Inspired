@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {getQuotes, getQuotesByUser, createQuote, deleteQuote, editQuote} from "../store/quote"
 import {getCollections, createCollection, editCollection, deleteCollection} from "../store/collection";
 import {getCollectionQuotes, createCollectionQuote, removeQuote} from "../store/collection_quote"
+import {getFavorites, favoriteQuote, unlikeQuote} from "../store/favorite";
 
 function TestApiRoutes() {
     const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function TestApiRoutes() {
         // dispatch(getCollectionQuotes(2))
         // dispatch(createCollectionQuote(2, 25))
         // dispatch(removeQuote(2, 25))
+        // dispatch(getFavorites(1));
+        // dispatch(favoriteQuote(1,20))
+        // dispatch(unlikeQuote(1, 10))
     }, [dispatch])
 
 
