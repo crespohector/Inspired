@@ -1,11 +1,16 @@
-from app.models import db, Favorite
+from app.models import db, User, Quote
 
 # Adds a demo user, you can add other users here if you want
 def seed_favorites():
 
-    for i in range(1,15):
-        favorite = Favorite(quote_id=i, user_id=1)
-        db.session.add(favorite)
+    #query for the demo user
+    user = User.query.get(1)
+
+    #create a for loop where the user likes 10 quotes
+    for i in range(1, 11):
+        quote = Quote.query.get(i)
+        quote.users.append(user)
+        db.session.add(quote)
 
     db.session.commit()
 

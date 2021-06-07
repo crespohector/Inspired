@@ -4,12 +4,14 @@ import session from "./session";
 import quote from "./quote";
 import collection from "./collection";
 import collection_quote from './collection_quote';
+import favorite from './favorite';
 
 const rootReducer = combineReducers({
     session,
     quote,
     collection,
-    collection_quote
+    collection_quote,
+    favorite,
 });
 
 
