@@ -1,25 +1,26 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .navbar-wrapper_img_about{
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .navbar-wrapper_demo_login {
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .about_link {
     text-decoration: none;
     font-size: 24px;
-    color: rgb(122, 117, 117);
+    color: rgb(39, 38, 38);
+    font-weight: 600;
 }
 
 .about_link:hover {
