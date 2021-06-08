@@ -9,6 +9,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 
+import SplashPage from './components/SplashPage';
+
 //Testing purposes
 import TestApiRoutes from "./components/TestApiRoutes";
 
@@ -30,8 +32,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
+        <Route path="/" exact={true} >
+          <SplashPage />
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
@@ -44,11 +49,11 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
         <Route path="/test" exact={true}>
           <TestApiRoutes />
+        </Route>
+        <Route>
+          <h1>Page not found</h1>
         </Route>
       </Switch>
     </BrowserRouter>
