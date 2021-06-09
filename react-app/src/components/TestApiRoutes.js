@@ -16,18 +16,18 @@ function TestApiRoutes() {
         //     'anonymous',
         //     1,
         // ))
-        // dispatch(deleteQuote(105))
-        // dispatch(editQuote('This is edited quote', 'edited author', 106))
+        // dispatch(deleteQuote(62))
+        // dispatch(editQuote('This is edited quote', 'edited author', 61))
         // dispatch(getCollections(1))
         // dispatch(createCollection('new title', 1))
-        // dispatch(editCollection('edited title', 12))
-        // dispatch(deleteCollection(9))
+        // dispatch(editCollection('edited title', 6))
+        // dispatch(deleteCollection(6))
         // dispatch(getCollectionQuotes(2))
         // dispatch(createCollectionQuote(2, 25))
         // dispatch(removeQuote(2, 25))
         // dispatch(getFavorites(1));
         // dispatch(favoriteQuote(1,20))
-        // dispatch(unlikeQuote(1, 10))
+        // dispatch(unlikeQuote(1, 20))
     }, [dispatch])
 
 

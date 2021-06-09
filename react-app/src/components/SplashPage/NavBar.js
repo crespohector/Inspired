@@ -8,7 +8,7 @@ import inspiredLogo from '../../images/inspiredText.png';
 import "./NavBar.css";
 
 const NavBar = () => {
-
+    const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
     const demoLogin = async (e) => {
@@ -18,9 +18,9 @@ const NavBar = () => {
         await dispatch(login(email, password));
     }
 
-    //   if (user) {
-    //     return <Redirect to="/explore" />;
-    //   }
+      if (user) {
+        return <Redirect to="/explore" />;
+      }
 
     return (
         <div className="navbar">

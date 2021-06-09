@@ -18,7 +18,7 @@ def quotes_by_user(userId):
     '''
     GET all quotes based on userId
     '''
-    quotes = Quote.query.filter(Quote.user_id == userId).all()
+    quotes = Quote.query.filter(Quote.owner_id == userId).all()
     return {"quotes": [quote.to_dict() for quote in quotes]}
 
 
@@ -35,7 +35,7 @@ def create_quote(userId):
         quote = Quote(
             content=form.data['content'],
             author=form.data['author'],
-            user_id=userId
+            owner_id=userId
         )
         db.session.add(quote)
         db.session.commit()
