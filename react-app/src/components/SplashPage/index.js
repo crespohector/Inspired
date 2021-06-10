@@ -1,12 +1,18 @@
 import React from 'react';
 import NavBar from './NavBar';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import Footer from "./Footer";
 
 import "./SplashPage.css"
-import backgroundImage from '../../images/backgroundImg.jpg';
 
 const SplashPage = () => {
+    const user = useSelector(state => state.session.user);
+
+    if (user) {
+        return <Redirect to="/explore" />;
+    }
+
     return (
         <div className="main_container">
             <NavBar />

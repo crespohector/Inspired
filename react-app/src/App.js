@@ -9,6 +9,9 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 
+import Collection from './components/Collection';
+import Favorite from "./components/Favorite";
+import Quote from "./components/Quote"
 import SplashPage from './components/SplashPage';
 import About from './components/About'
 import Explore from './components/Explore';
@@ -50,11 +53,20 @@ function App() {
         <Route path="/explore" exact={true}>
           <Explore />
         </Route>
-        <ProtectedRoute path="/users" exact={true} >
+        {/* <ProtectedRoute path="/users" exact={true} >
           <UsersList/>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId/quotes" exact={true} >
+          <Quote />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId/favorites" exact={true} >
+        <Favorite />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId/collections" exact={true} >
+        <Collection />
         </ProtectedRoute>
         <Route path="/test" exact={true}>
           <TestApiRoutes />

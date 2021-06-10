@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import Footer from '../SplashPage/Footer';
 
 import "./LoginForm.css";
+import InspiredLogo from '../../images/inspiredText.png';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -12,6 +13,12 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const routeChange = () =>{
+    history.push('/');
+  }
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -36,6 +43,7 @@ const LoginForm = () => {
   return (
     <div className="login_main_container">
       <div className="content">
+      <img src={InspiredLogo} alt="inspired logo" onClick={routeChange} className="logo"/>
         <form onSubmit={onLogin}>
           <div>
             {errors.map((error) => (

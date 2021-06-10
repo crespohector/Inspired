@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect, NavLink, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import Footer from '../SplashPage/Footer';
 
 import "./SignUpForm.css";
+import InspiredLogo from '../../images/inspiredText.png';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
@@ -13,6 +14,12 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const routeChange = () => {
+    history.push('/');
+  }
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -44,6 +51,7 @@ const SignUpForm = () => {
   return (
     <div className="sign_up_container">
       <div className="sign_up-content">
+        <img src={InspiredLogo} alt="inspired logo" onClick={routeChange} className="logo" />
         <form onSubmit={onSignUp}>
           <div>
             <input

@@ -1,0 +1,16 @@
+.user_main_container {
+    /* background-color: white; */
+    background-image: url(../../images/footpath.jpg);
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.quote_container {
+    border: 1px solid black;
+    margin: auto;
+    width: 70%;
+    height: 50%;
+    /* overflow: scroll; */
+}

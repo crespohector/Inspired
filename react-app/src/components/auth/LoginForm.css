@@ -57,3 +57,7 @@
     text-decoration: none;
     color: #c84b31;
 }
+
+.logo {
+    cursor: pointer;
+}

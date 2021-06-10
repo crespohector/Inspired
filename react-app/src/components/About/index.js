@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import NavBar from '../SplashPage/NavBar'
+import UserNavBar from '../Explore/UserNavBar'
 
 import bio from "../../images/bio.JPG";
 import "./About.css";
@@ -8,7 +8,7 @@ import "./About.css";
 const About = () => {
     return (
         <div className="about_main_wrapper">
-            <NavBar />
+            <UserNavBar />
             <div className="about_me_container">
                 <div className="left_content">
                     <div className="left_content-bio">
