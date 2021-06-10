@@ -1,0 +1,28 @@
+.profile-body_content {
+    width: 60%;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    padding: 20px 0px;
+    border-radius: 6px;
+    background-color: whitesmoke;
+    border: 1px solid rgb(192, 191, 191);
+}
+
+.profile-body_content-header {
+    font-weight: 600;
+    font-size: 1.8em;
+    display: block;
+}
+
+.profile-body_content-username {
+    font-size: 1.2em;
+    display: block;
+    margin: 15px 0px;
+}
+
+.profile-body_content-email {
+    font-size: 1.2em;
+    display: block;
+    margin: 15px 0px;
+}

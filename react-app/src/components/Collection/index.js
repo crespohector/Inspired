@@ -15,7 +15,7 @@ function Collection() {
   if (!user) {
     return <Redirect to="/" />;
   }
-
+//copy quote and the three dots and have it say edit collection
 
   return (
     <div>

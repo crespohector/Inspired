@@ -9,8 +9,13 @@
 
 .quote_container {
     border: 1px solid black;
+    background-color: transparent;
     margin: auto;
-    width: 70%;
-    height: 50%;
+    width: 50%;
+    height: 40%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* overflow: scroll; */
 }
