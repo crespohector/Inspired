@@ -36,6 +36,8 @@
     top: 46px;
     right: 0px;
     padding: 4px 10px;
+    width: 8em;
+    z-index: 1;
 }
 
 
@@ -54,4 +56,5 @@
 
 #my_profile_explore {
     color: #c84b31;
+    font-size: 1.3em;
 }

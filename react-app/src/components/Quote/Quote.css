@@ -14,7 +14,7 @@
 .quote-body_content-header {
     font-weight: 600;
     font-size: 1.7em;
-    display: block;
+    display: inline-block;
 }
 
 .quote-body_content-content {
@@ -38,6 +38,7 @@
 .quote-body_content-content_option {
     cursor: pointer;
     float: right;
+    position: relative;
 }
 
 .quote-body_content-content_author {
@@ -45,4 +46,38 @@
     font-weight: 600;
     margin: 8px 0px;
     padding: 0px 0px 0px 10px;
+}
+
+.quote-body_content-settings {
+    position: absolute;
+    /* top: 0px; */
+    right: 20px;
+    padding: 4px 10px;
+}
+
+.modal {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    margin: 5% auto;
+    width: 40%;
+}
+
+
+/* Create quote modal */
+.post_quote_btn {
+    background-color: #d8ebb5;
+    border: 1px solid #b6c79a;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    float: left;
 }

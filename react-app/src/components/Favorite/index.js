@@ -35,7 +35,7 @@ function Favorite() {
           {favoritesArr.map(favorite => (
             <div key={favorite.id} className="favorite-body_content-content">
               <span className="favorite-body_content-content_favorite">{favorite.content}</span>
-              <span className="favorite-body_content-content_option"><i class="fas fa-heart"></i></span>
+              <span className="favorite-body_content-content_option"><i className="fas fa-heart"></i></span>
               <span className="favorite-body_content-content_author">- {favorite.author}</span>
             </div>
           ))}

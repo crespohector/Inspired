@@ -42,13 +42,13 @@ const Explore = () => {
     return (
         <div className="user_main_container">
             <UserNavBar />
-            <div className="quote_container">
-                {/* {quotesArr.map(quote => (
-                    <div key={quote.id} className="swipe">{quote.content}</div>
-                ))} */}
-                <TinderCard onSwipe={onSwipe} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['up', 'down']}>
-                        Content goes here
-                </TinderCard>
+            <div className="card_container">
+                {quotesArr.map((quote) => (
+                    <TinderCard className="tinder_card" key={quote.id} onSwipe={onSwipe} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['up', 'down']}>
+                        <div className="tinder_card_quote">{quote.content}</div>
+                        <div className="tinder_card_author">{quote.author}</div>
+                    </TinderCard>
+                ))}
             </div>
             <Footer />
         </div>

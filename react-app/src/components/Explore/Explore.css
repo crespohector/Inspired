@@ -7,15 +7,28 @@
     background-repeat: no-repeat;
 }
 
-.quote_container {
+.card_container {
     border: 1px solid black;
     background-color: transparent;
     margin: auto;
-    width: 50%;
-    height: 40%;
+    width: 300px;
+    height: 200px;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* overflow: scroll; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    overflow: hidden;
+}
+
+
+/* tinder card  */
+.tinder_card {
+    width: 300px;
+    height: 200px;
+}
+
+
+.tinder_card_quote,
+.tinder_card_author {
+    overflow: hidden;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 
@@ -34,10 +34,10 @@ const Profile = () => {
             </button>
             {showMenu && (
                 <div className="profile-dropdown">
-                    <NavLink className="links my_profile_link" to={`/users/${user.id}`}>Profile</NavLink>
-                    <NavLink className="links my_profile_quotes" to={`/users/${user.id}/quotes`}>My Quotes</NavLink>
-                    <NavLink className="links my_profile_favorites" to={`/users/${user.id}/favorites`}>Favorites</NavLink>
-                    <NavLink className="links my_profile_collections" to={`/users/${user.id}/collections`}>Collections</NavLink>
+                    <NavLink className="links my_profile_link" to={`/users/${user.id}`}>👤 Profile</NavLink>
+                    <NavLink className="links my_profile_quotes" to={`/users/${user.id}/quotes`}>📝 My Quotes</NavLink>
+                    <NavLink className="links my_profile_favorites" to={`/users/${user.id}/favorites`}>❤️ Favorites</NavLink>
+                    <NavLink className="links my_profile_collections" to={`/users/${user.id}/collections`}>🔖 Collections</NavLink>
                     <LogoutButton />
                     <NavLink className="links" id="my_profile_explore" to="/explore">Explore</NavLink>
                 </div>
