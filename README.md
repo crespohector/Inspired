@@ -9,8 +9,8 @@ Inspired is an app where users can swipe to like or dislike daily quotes and cre
   * Users can create an account, log in, and log out.
   * Users can use a demo log in to try the site.
   * Logged out users are directed to the home page.
-  * Logged in users can create, edit, and delete quotes they created.
-  * Logged in users can create, edit, and delete collections they created.
+  * Logged in users can create, edit, and delete quotes.
+  * Logged in users can create, edit, and delete collections.
   * Logged in users can like/dislike a quote.
 
 ## BONUS / STRETCH GOALS
