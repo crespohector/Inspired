@@ -2,8 +2,8 @@
 ## Live Link: https://inspired1.herokuapp.com/
 Whether you're overcoming obstacles in life, need an extra push to get stuff done, or enjoy sharing postive quotes with your friends, Inspired is here to help!
 Inspired is an app where users can swipe to like or dislike daily quotes and create collections to store their favorite quotes.
-![InspiredSplashPage](https://user-images.githubusercontent.com/76798385/121737830-62cf7d80-cac7-11eb-8f86-a1c26222c675.png)
 
+![InspiredSplashPage](https://user-images.githubusercontent.com/76798385/121737830-62cf7d80-cac7-11eb-8f86-a1c26222c675.png)
 
 ## MVP
   * Users can create an account, log in, and log out.
