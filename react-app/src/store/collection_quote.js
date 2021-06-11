@@ -66,11 +66,10 @@ const collectionQuoteReducer = (state={}, action) => {
     let newState;
     switch (action.type) {
         case GET_COLLECTION_QUOTES:
-            newState = {...state}
+            newState = {}
             action.data['collection_quote'].forEach(quote => {
                 newState[quote.id] = quote
             });
-            // newState['quotes'] = action.data['collection_quote']
             return newState;
 
         case ADD_COLLECTION_QUOTE:
@@ -82,7 +81,7 @@ const collectionQuoteReducer = (state={}, action) => {
             newState = {...state}
             delete newState[action.data.id];
             return newState;
-            
+
         default:
             return state
     }

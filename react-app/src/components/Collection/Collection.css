@@ -8,7 +8,7 @@
     border-radius: 6px;
     background-color: whitesmoke;
     border: 1px solid rgb(192, 191, 191);
-    overflow:auto;
+    overflow: scroll;
 }
 
 .collection-body_content-header {
@@ -23,7 +23,6 @@
     text-align: left;
     font-family: sans-serif;
     cursor: pointer;
-    /* border: 1px solid black; */
 }
 
 .collection-body_content-content:nth-child(even) {

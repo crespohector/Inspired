@@ -69,7 +69,7 @@ function Quote() {
   return (
     <div>
       <UserNavBar />
-      <div className="quote-body_content">
+      <div className="quote-body_content" id="scrollbar">
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <h1>Edit Quote</h1>
           <form onSubmit={onSubmit}>
