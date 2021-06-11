@@ -15,7 +15,7 @@ import About from './components/About'
 import Explore from './components/Explore';
 
 //Testing purposes
-import TestApiRoutes from "./components/TestApiRoutes";
+// import TestApiRoutes from "./components/TestApiRoutes";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -63,9 +63,9 @@ function App() {
         <ProtectedRoute path="/users/:userId/collections" exact={true} >
         <Collection />
         </ProtectedRoute>
-        <Route path="/test" exact={true}>
+        {/* <Route path="/test" exact={true}>
           <TestApiRoutes />
-        </Route>
+        </Route> */}
         <Route>
           <h1>Page not found</h1>
         </Route>
