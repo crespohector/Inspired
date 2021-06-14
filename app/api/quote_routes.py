@@ -18,7 +18,7 @@ def quotes_by_user(userId):
     '''
     GET all quotes based on userId
     '''
-    quotes = Quote.query.filter(Quote.user_id == userId).all()
+    quotes = Quote.query.filter(Quote.owner_id == userId).all()
     return {"quotes": [quote.to_dict() for quote in quotes]}
 
 
@@ -31,16 +31,19 @@ def create_quote(userId):
 
     form = QuoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    if len(form.data['author']) == 0:
+        form['author'].data = "anonymous"
+
     if form.validate_on_submit():
         quote = Quote(
             content=form.data['content'],
             author=form.data['author'],
-            user_id=userId
+            owner_id=userId
         )
         db.session.add(quote)
         db.session.commit()
-        # return quote.to_dict()
-        return jsonify(data)
+        return quote.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -48,7 +51,7 @@ def create_quote(userId):
 @quote_routes.route('/<id>/', methods=['PUT'])
 def edit_quote(id):
     '''
-    POST edit a quote base on its primary id
+    PUT edit a quote base on its primary id
     '''
     #IMPORTANT: make sure to render errors on the front end when editing quotes, it cannot be empty
     form = QuoteForm()

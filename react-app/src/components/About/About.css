@@ -1,0 +1,98 @@
+.about_main_wrapper {
+    background-image: url(../../images/workspace.jpg);
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    text-align: center;
+}
+
+.about_me_container {
+    border: 1px solid whitesmoke;
+    display: flex;
+    margin: auto;
+    max-width: 800px;
+}
+
+.left_content {
+    background-color: rgb(245, 236, 231);
+    /* border: 1px solid blue; */
+}
+
+.left_content-bio {
+    /* border: 1px solid red; */
+    padding: 10px;
+}
+
+.left_content-links {
+    background-color: white;
+    /* border: 1px solid green; */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.bio {
+    border-radius: 50%;
+    width: 180px;
+    height: 240px;
+}
+
+.first_name {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    display: block;
+}
+
+.last_name {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    display: block;
+    border-bottom: 2px solid black;
+}
+
+.role {
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.left_content-github_icon {
+    margin: 0px 10px;
+    font-size: 1.4em;
+    color: black;
+}
+
+.left_content-linkedin_icon {
+    font-size: 1.4em;
+    color: blue;
+}
+
+.right_content {
+    padding: 10px;
+    background-color: white;
+}
+
+.right_content-hello {
+    font-weight: 900;
+    font-size: 2.5em;
+    display: block;
+}
+
+.right_content-hello_sentence {
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.right_content-intro_one {
+    line-height: 1.6;
+    font-size: 1.1em;
+    font-family: 'Times New Roman', Times, serif;
+}

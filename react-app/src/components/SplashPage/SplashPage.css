@@ -1,0 +1,62 @@
+.main_container {
+    background-image: url(../../images/backgroundImg.jpg);
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.body_container {
+    /* border: 1px solid blue; */
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+    max-width: 800px;
+    background-color: whitesmoke;
+    opacity: .92;
+    padding: 20px 20px;
+    border-radius: 6px;
+}
+
+.header-1,
+.header-2,
+.header-3,
+.header-4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.header-1 {
+    font-size: 1.4em;
+    color: #000000;
+}
+
+.header-2 {
+    font-size: 1.1em;
+    color: #000000;
+}
+
+.header-3 {
+    font-size: 1.1em;
+    color: #000000;
+}
+
+.header-4 {
+    font-size: 0.8em;
+    color: #000000;
+    font-weight: normal;
+    margin: 0px 0px 30px 0px;
+}
+
+.sign_up {
+    text-decoration: none;
+    background-color: #c84b31;
+    color: white;
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 10px 18px;
+}
+
+.sign_up:hover {
+    background-color: #e95b3e;
+}

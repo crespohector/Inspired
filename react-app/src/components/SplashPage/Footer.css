@@ -1,0 +1,31 @@
+.footer_container {
+    /* border: 1px solid black; */
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 3rem;
+    background-color: whitesmoke;
+    opacity: .85;
+}
+
+.footer_container-content {
+    margin: auto;
+    /* border: 1px solid red; */
+}
+
+.dev_name {
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.github_icon {
+    margin: 0px 10px;
+    font-size: 1.2em;
+    color: black;
+}
+
+.linkedin_icon {
+    font-size: 1.2em;
+    color: blue;
+}

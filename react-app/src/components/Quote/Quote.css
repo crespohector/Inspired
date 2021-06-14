@@ -1,0 +1,133 @@
+.quote-body_content {
+    width: 70%;
+    height: 32em;
+    margin: auto;
+    margin-top: 2%;
+    text-align: center;
+    padding: 20px 5px;
+    border-radius: 6px;
+    background-color: whitesmoke;
+    border: 1px solid rgb(192, 191, 191);
+    overflow:auto;
+}
+
+#scrollbar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#scrollbar::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(#afdd9e),
+									   to(#78bf70),
+									   color-stop(.6,#9ed491))
+}
+
+.quote-body_content-header {
+    font-weight: 600;
+    font-size: 1.7em;
+    display: inline-block;
+}
+
+.quote-body_content-content {
+    padding: 5px;
+    margin: 10px 0px;
+    text-align: left;
+    font-family: sans-serif;
+    /* border: 1px solid black; */
+}
+
+.quote-body_content-content:hover {
+    box-shadow: 0px 0px 2pt 1pt black;
+}
+
+.quote-body_content-content:nth-child(odd) {
+    background-color:rgb(221, 218, 218);
+}
+
+.quote-body_content-content_quote {
+    display: inline-block;
+    margin: 8px 0px;
+    padding: 0px 0px 0px 10px;
+}
+
+.quote-body_content-content_option {
+    cursor: pointer;
+    float: right;
+    position: relative;
+}
+
+.quote-body_content-content_author {
+    display: block;
+    font-weight: 600;
+    margin: 8px 0px;
+    padding: 0px 0px 0px 10px;
+}
+
+.quote-body_content-settings {
+    position: absolute;
+    /* top: 0px; */
+    right: 20px;
+    padding: 4px 10px;
+}
+
+.modal {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    margin: 5% auto;
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+/* Create quote modal */
+.post_quote_btn {
+    background-color: #d8ebb5;
+    border: 1px solid #b6c79a;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    float: left;
+}
+
+/* error message for all modals */
+.errors {
+    color: red;
+    list-style: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0px auto;
+}
+
+.form input, button{
+    margin: 2px 0px;
+}

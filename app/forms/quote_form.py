@@ -4,4 +4,4 @@ from wtforms.validators import DataRequired
 
 class QuoteForm(FlaskForm):
     content = StringField("Quote", validators=[DataRequired()])
-    author = StringField("Author", validators=[DataRequired()])
+    author = StringField("Author")

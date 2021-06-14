@@ -3,14 +3,19 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+import User from "./components/User/User";
 import { authenticate } from "./store/session";
 
+import Collection from './components/Collection';
+import Favorite from "./components/Favorite";
+import Quote from "./components/Quote"
+import SplashPage from './components/SplashPage';
+import About from './components/About'
+import Explore from './components/Explore';
+
 //Testing purposes
-import TestApiRoutes from "./components/TestApiRoutes";
+// import TestApiRoutes from "./components/TestApiRoutes";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -30,25 +35,39 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
+        <Route path="/" exact={true} >
+          <SplashPage />
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
+        <Route path="/about" exact={true}>
+          <About />
+        </Route>
+        <Route path="/explore" exact={true}>
+          <Explore />
+        </Route>
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} >
-          <h1>My Home Page</h1>
+        <ProtectedRoute path="/users/:userId/quotes" exact={true} >
+          <Quote />
         </ProtectedRoute>
-        <Route path="/test" exact={true}>
+        <ProtectedRoute path="/users/:userId/favorites" exact={true} >
+        <Favorite />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId/collections" exact={true} >
+        <Collection />
+        </ProtectedRoute>
+        {/* <Route path="/test" exact={true}>
           <TestApiRoutes />
+        </Route> */}
+        <Route>
+          <h1>Page not found</h1>
         </Route>
       </Switch>
     </BrowserRouter>

@@ -1,0 +1,11 @@
+.UserNavBar {
+    display: flex;
+    border-bottom: 1px solid #b6c79a;
+    background-color: #d8ebb5;
+    justify-content: space-between;
+}
+
+.UserNavBar-wrapper_img_about {
+    display: flex;
+    align-items: center;
+}
