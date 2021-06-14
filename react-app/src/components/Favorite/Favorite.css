@@ -25,6 +25,10 @@
     /* border: 1px solid black; */
 }
 
+.favorite-body_content-content:hover {
+    box-shadow: 0px 0px 2pt 1pt black;
+}
+
 .favorite-body_content-content:nth-child(even) {
     background-color:rgb(221, 218, 218);
 }

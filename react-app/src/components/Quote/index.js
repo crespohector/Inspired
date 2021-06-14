@@ -72,7 +72,7 @@ function Quote() {
       <div className="quote-body_content" id="scrollbar">
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <h1>Edit Quote</h1>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="form">
             <label htmlFor="content">Content</label>
             <input value={content} onChange={e => setContent(e.target.value)} placeholder="Edit quote here..." />
             <input value={author} onChange={e => setAuthor(e.target.value)} placeholder="Edit author here..." />

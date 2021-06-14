@@ -37,12 +37,12 @@ function CreateQuoteBtn() {
             <button className="post_quote_btn" onClick={() => setModalIsOpen(true)}>Create Quote</button>
             <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <h1>Add Your Own Quote!</h1>
-                <ul className="content_errors">
+                <ul className="errors">
                     {errors.map(error => (
                         <li key={error}>{error}</li>
                     ))}
                 </ul>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} className="form">
                     <label htmlFor="content">Content</label>
                     <input value={content} onChange={e => setContent(e.target.value)} placeholder="Enter quote here..." required />
                     <input value={author} onChange={e => setAuthor(e.target.value)} placeholder="Enter author here..." />

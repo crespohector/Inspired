@@ -34,7 +34,7 @@ const Profile = () => {
             </button>
             {showMenu && (
                 <div className="profile-dropdown">
-                    <NavLink className="links my_profile_link" to={`/users/${user.id}`}>👤 Profile</NavLink>
+                    <NavLink className="links my_profile_link" to={`/users/${user.id}`}><i className="far fa-user"></i> Profile</NavLink>
                     <NavLink className="links my_profile_quotes" to={`/users/${user.id}/quotes`}>📝 My Quotes</NavLink>
                     <NavLink className="links my_profile_favorites" to={`/users/${user.id}/favorites`}>❤️ Favorites</NavLink>
                     <NavLink className="links my_profile_collections" to={`/users/${user.id}/collections`}>🔖 Collections</NavLink>

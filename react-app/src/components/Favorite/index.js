@@ -14,8 +14,6 @@ function Favorite() {
   const favorites = useSelector(state => state.favorite);
   const favoritesArr = Object.values(favorites)
 
-  // console.log("----favorites arr: ", favoritesArr)
-
   useEffect(() => {
     dispatch(getFavorites(userId))
   }, [dispatch])
@@ -25,7 +23,6 @@ function Favorite() {
   }
 
   const onClickUnlikeQuote = (favorite) => {
-    // console.log("favorite: ", favorite.id)
     const quoteId = favorite.id
     const intUserId = parseInt(userId)
     dispatch(unlikeQuote(intUserId, quoteId))
@@ -34,7 +31,7 @@ function Favorite() {
   return (
     <div>
       <UserNavBar />
-      <div className="favorite-body_content">
+      <div className="favorite-body_content" id="scrollbar">
           <span className="favorite-body_content-header">Favorites</span>
           {favoritesArr.map(favorite => (
             <div key={favorite.id} className="favorite-body_content-content">

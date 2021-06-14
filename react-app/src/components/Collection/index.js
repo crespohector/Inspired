@@ -80,15 +80,15 @@ function Collection() {
   return (
     <div>
       <UserNavBar />
-      <div className="collection-body_content">
+      <div className="collection-body_content" id="scrollbar">
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-          <ul className="title_errors">
+          <h1>Edit Collection</h1>
+          <ul className="errors">
             {errors.map(error => (
               <li key={error}>{error}</li>
             ))}
           </ul>
-          <h1>Edit Collection</h1>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="form">
             <label htmlFor="collection">Collection</label>
             <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Edit collection here..." />
             <button onClick={() => setModalIsOpen(false)}>Close</button>

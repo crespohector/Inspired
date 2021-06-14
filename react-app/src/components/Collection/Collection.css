@@ -25,7 +25,12 @@
     cursor: pointer;
 }
 
-.collection-body_content-content:nth-child(even) {
+.collection-body_content-content:hover {
+    /* outline: 1px solid black; */
+    box-shadow: 0 0 2pt 1pt rgb(36, 35, 35);
+}
+
+.collection-body_content-content:nth-child(odd) {
     background-color:rgb(221, 218, 218);
 }
 
@@ -34,6 +39,10 @@
     margin: 8px 0px;
     padding: 0px 0px 0px 10px;
 }
+
+/* .collection-body_content-content_collection:hover {
+    text-shadow: 0.2px 0.2px #000000;
+} */
 
 .collection-body_content-content_option {
     cursor: pointer;

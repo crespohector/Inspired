@@ -8,16 +8,17 @@
 }
 
 .card_container {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: transparent;
     margin: auto;
+    margin-top: 4%;
     width: 300px;
     height: 200px;
-    text-align: center;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
+    /* width: 40vw; */
+    /* height: 20vh; */
+    text-align: left;
     overflow: hidden;
+    padding: 5px;
 }
 
 
@@ -25,10 +26,46 @@
 .tinder_card {
     width: 300px;
     height: 200px;
+    cursor:grab;
+    /* width: 40vw; */
+    /* height: 20vh; */
 }
-
 
 .tinder_card_quote,
 .tinder_card_author {
     overflow: hidden;
+}
+
+.tinder_card_quote {
+    font-family: cursive, Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+}
+
+.tinder_card_author {
+    text-align: right;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin-top: 5px;
+    font-size: 1.1em;
+}
+
+.heart {
+    margin: auto;
+    color: red;
+    font-size: 5em;
+    width: 50px;
+    box-sizing: content-box;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.swipe_text_container {
+    /* border: 1px solid black; */
+    color: rgb(0, 0, 0);
+    margin: auto;
+    margin-top: 8px;
+    font-size: 1.2em;
+    width: 200px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
 }

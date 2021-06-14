@@ -14,7 +14,7 @@ function CollectionQuote() {
     const [collectionId, setCollectionId] = useState(null);
 
     const quotes = useSelector(state => state.collection_quote);
-    console.log('----collection quotes: ', quotes);
+    // console.log('----collection quotes: ', quotes);
 
     useEffect(() => {
         dispatch(getCollectionQuotes(collectionId));

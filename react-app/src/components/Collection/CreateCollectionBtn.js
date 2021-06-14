@@ -35,12 +35,12 @@ function CreateCollectionBtn() {
             <button className="post_quote_btn" onClick={() => setModalIsOpen(true)}>Create collection</button>
             <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <h1>Add Your Own Collection!</h1>
-                <ul className="title_errors">
+                <ul className="errors">
                     {errors.map(error => (
                         <li key={error}>{error}</li>
                     ))}
                 </ul>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} className="form">
                     <label htmlFor="collection">Collection</label>
                     <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter title here..." required />
                     <button onClick={() => setModalIsOpen(false)}>Close</button>

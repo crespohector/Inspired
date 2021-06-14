@@ -56,7 +56,7 @@ export const removeQuote = (collectionId, quoteId) => async (dispatch) => {
         body: JSON.stringify({quoteId})
     });
     const quote = await response.json()
-    console.log('-----removed quote from collection------: ', quote)
+    // console.log('-----removed quote from collection------: ', quote)
     dispatch(removeCollectionQuote(quote));
     return ;
 }

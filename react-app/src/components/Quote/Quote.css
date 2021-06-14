@@ -50,7 +50,11 @@
     /* border: 1px solid black; */
 }
 
-.quote-body_content-content:nth-child(even) {
+.quote-body_content-content:hover {
+    box-shadow: 0px 0px 2pt 1pt black;
+}
+
+.quote-body_content-content:nth-child(odd) {
     background-color:rgb(221, 218, 218);
 }
 
@@ -94,6 +98,10 @@
     padding: 20px;
     margin: 5% auto;
     width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 
@@ -105,4 +113,21 @@
     font-size: 1.1em;
     cursor: pointer;
     float: left;
+}
+
+/* error message for all modals */
+.errors {
+    color: red;
+    list-style: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0px auto;
+}
+
+.form input, button{
+    margin: 2px 0px;
 }
