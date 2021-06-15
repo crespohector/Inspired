@@ -24,11 +24,12 @@ Inspired is an app where users can swipe to like or dislike daily quotes and cre
   * React-Redux
   * Javascript
   * Flask
-  * Sql-Alchemy
+  * SQL-Alchemy
   * Alembic
   * Python
   * CSS
   * HTML
+  * PostgreSQL
   
 ## DATABASE SCHEMA
 
