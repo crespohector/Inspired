@@ -117,7 +117,6 @@ Inspired is an app where users can swipe to like or dislike daily quotes and cre
    * WTForms
    * alembic
    * Flask
-   * Heroku
 
 ## FRONTEND ENVIORNMENT DEPENDENCIES/INSTALLATION
    * react-tinder-card
