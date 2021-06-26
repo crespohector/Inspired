@@ -29,10 +29,7 @@ const About = () => {
                 <div className="right_content">
                     <span className="right_content-hello">Hello</span>
                     <p className="right_content-hello_sentence">Here's who I am and what I do</p>
-                    <p className="right_content-intro_one">After earning my bachelor's degree in computer science
-                    from New Jersey City University, I entered the tech industry to explore my passion for developing websites and learning
-                    new technology. Dolor esse officia aliquip sint sint ex pariatur excepteur consequat. Do Lorem laborum voluptate magna Lorem do eiusmod culpa commodo minim magna laboris aliquip culpa. Irure officia in nostrud esse eu consectetur amet Lorem minim laboris eu reprehenderit. Nostrud culpa culpa excepteur sit magna laborum. Elit eiusmod pariatur fugiat minim excepteur qui culpa occaecat magna qui irure sit.
-                    </p>
+                    <p className="right_content-intro_one">I love the result of building full stack web applications from the ground-up. I am a problem-solver and enjoy debugging errors and figuring out solutions. I'm an enthusiastic teammate and have a passion for learning new technologies. I have experience building dynamic web applications in JavaScript, Python, React, Flask, SQLAlchemy, Express.js, Node.js, and PostgreSQL. When I am not coding, I take delight in eating delicious food, listening to podcasts, and excercising.</p>
                 </div>
             </div>
         </div>
