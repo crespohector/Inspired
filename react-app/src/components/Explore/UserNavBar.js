@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from "../../store/session";
 
@@ -8,6 +8,7 @@ import inspiredLogo from '../../images/inspiredText.png';
 import "./UserNavbar.css";
 
 const UserNavBar = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
 
@@ -18,10 +19,14 @@ const UserNavBar = () => {
         await dispatch(login(email, password));
     }
 
+    const handleClick = () => {
+        history.push('/')
+    }
+
     return (
         <div className="UserNavBar">
             <div className="UserNavBar-wrapper_img_about">
-                <div className="UserNavBar-img">
+                <div onClick={handleClick} className="UserNavBar-img">
                     <img src={inspiredLogo} alt="inspired logo"></img>
                 </div>
                 <div className="UserNavBar-about">
