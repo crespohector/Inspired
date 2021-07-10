@@ -33,14 +33,15 @@ const UserNavBar = () => {
                     <NavLink className="about_link" to="/about">About</NavLink>
                 </div>
             </div>
-            { user ? <Profile /> : <div className="navbar-wrapper_demo_login">
-                <div className="navbar-demo_user">
-                    <button onClick={demoLogin} className="demo_user">Demo User</button>
-                </div>
-                <div className="navbar-login_btn">
-                    <NavLink to="/login" exact={true} className="login_btn"> Login </NavLink>
-                </div>
-            </div>}
+            {user ? <Profile /> :
+                <div className="navbar-wrapper_demo_login">
+                    <div className="navbar-demo_user">
+                        <button onClick={demoLogin} className="demo_user">Demo User</button>
+                    </div>
+                    <div className="navbar-login_btn">
+                        <NavLink to="/login" exact={true} className="login_btn"> Login </NavLink>
+                    </div>
+                </div>}
         </div>
     );
 }

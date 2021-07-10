@@ -35,7 +35,7 @@
     position: absolute;
     top: 46px;
     right: 0px;
-    padding: 4px 10px;
+    /* padding: 4px 10px; */
     width: 8em;
     z-index: 1;
 }
@@ -63,3 +63,6 @@
     color: red;
 }
 
+.links {
+    padding: 2px 4px;
+}

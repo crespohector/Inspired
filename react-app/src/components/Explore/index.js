@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import UserNavBar from './UserNavBar';
 import { getQuotes } from '../../store/quote';
-import { favoriteQuote } from '../../store/favorite';
+import { favoriteQuote, getFavorites } from '../../store/favorite';
 import Footer from '../SplashPage/Footer';
 
 import TinderCard from 'react-tinder-card'
@@ -13,7 +13,31 @@ const Explore = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const quotes = useSelector(state => state.quote);
-    const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null);
+    const favorites = useSelector(state => state.favorite);
+    const favoritesArr = Object.values(favorites)
+    const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user.id);
+
+    // console.log('----favorites: ', favoritesArr);
+    // console.log('quotes arr: ', quotesArr);
+
+    const filteredArr = []
+
+    for (let i = 0; i < quotesArr.length; i++) {
+        let bool = true;
+        for (let j = 0; j < favoritesArr.length; j++) {
+            if (quotesArr[i].id === favoritesArr[j].id) {
+                bool = false;
+                break;
+            }
+        }
+        if (bool) {
+            filteredArr.push(quotesArr[i]);
+        }
+    }
+
+    // console.log('----filtered arr: ', filteredArr);
+
+
 
     // const [userQuotes, setUserQuotes] = useState(quotesArr)
     // const [lastDirection, setLastDirection] = useState()
@@ -51,6 +75,7 @@ const Explore = () => {
 
     useEffect(() => {
         dispatch(getQuotes())
+        dispatch(getFavorites(user.id))
     }, [dispatch])
 
     const onSwipe = (direction, quote) => {
@@ -79,7 +104,7 @@ const Explore = () => {
             <UserNavBar />
             <div className="swipe_text_container"><span>Swipe left or right!</span></div>
             <div className="card_container">
-                {quotesArr.map((quote) => (
+                {filteredArr.map((quote) => (
                     <TinderCard className="tinder_card" key={quote.id} onSwipe={(e) => onSwipe(e, quote)} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['up', 'down']}>
                         <div className="tinder_card_quote">{quote.content}</div>
                         <div className="tinder_card_author">~ {quote.author}</div>
