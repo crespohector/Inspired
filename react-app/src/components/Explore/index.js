@@ -35,7 +35,7 @@ const Explore = () => {
         }
     }
 
-    // console.log('----filtered arr: ', filteredArr);
+    console.log('----filtered arr: ', filteredArr);
 
 
 
@@ -103,14 +103,19 @@ const Explore = () => {
         <div className="user_main_container">
             <UserNavBar />
             <div className="swipe_text_container"><span>Swipe left or right!</span></div>
-            <div className="card_container">
-                {filteredArr.map((quote) => (
-                    <TinderCard className="tinder_card" key={quote.id} onSwipe={(e) => onSwipe(e, quote)} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['up', 'down']}>
-                        <div className="tinder_card_quote">{quote.content}</div>
-                        <div className="tinder_card_author">~ {quote.author}</div>
-                    </TinderCard>
-                ))}
-            </div>
+            {filteredArr.length !== 0 ?
+                <div className="card_container">
+                    {filteredArr.map((quote) => (
+                        <TinderCard className="tinder_card" key={quote.id} onSwipe={(e) => onSwipe(e, quote)} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['up', 'down']}>
+                            <div className="tinder_card_quote">{quote.content}</div>
+                            <div className="tinder_card_author">~ {quote.author}</div>
+                        </TinderCard>
+                    ))}
+                </div> :
+                <div className="no_cards_container">
+                    <span>Currently no more quotes...</span>
+                    <span>Create your own quote!</span>
+                </div>}
             {/* <div className='buttons'>
                 <button onClick={() => swipe('left')}>Swipe left!</button>
                 <button onClick={() => swipe('right')}>Swipe right!</button>
