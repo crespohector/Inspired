@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import UserNavBar from '../Explore/UserNavBar'
 
 import bio from "../../images/bio.JPG";
 import "./About.css";
 
 const About = () => {
+    
     return (
         <div className="about_main_wrapper">
             <UserNavBar />
