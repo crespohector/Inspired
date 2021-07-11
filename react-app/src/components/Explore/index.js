@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import UserNavBar from './UserNavBar';
@@ -6,10 +6,13 @@ import { getQuotes } from '../../store/quote';
 import { favoriteQuote, getFavorites } from '../../store/favorite';
 import Footer from '../SplashPage/Footer';
 
+import Modal from "react-modal";
 import TinderCard from 'react-tinder-card'
 import "./Explore.css";
 
 const Explore = () => {
+    const [quoteId, setQuoteId] = useState(0);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const quotes = useSelector(state => state.quote);
@@ -35,7 +38,7 @@ const Explore = () => {
         }
     }
 
-    console.log('----filtered arr: ', filteredArr);
+    // console.log('----filtered arr: ', filteredArr);
 
 
 
@@ -80,6 +83,9 @@ const Explore = () => {
 
     const onSwipe = (direction, quote) => {
         // console.log('You swiped: ' + direction)
+        // console.log('quote: ' + quote.id)
+        setQuoteId(quote.id)
+
         //check if the user swiped right like, if left then reject
         if (direction === "right") {
             dispatch(favoriteQuote(user.id, quote.id))
@@ -95,6 +101,21 @@ const Explore = () => {
         // console.log(myIdentifier + ' left the screen')
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+        setModalIsOpen(false)
+    }
+
+    const onClickOpenModal = () => {
+        setModalIsOpen(true);
+        //inside the modal...
+        //1.) we want to dispatch a list of all the collections from the user
+        //2.) render all the collection similarly to the quotes css style
+        //3.) render a checkbox to each collection
+        //4.) create a submit btn
+        //5.) dispatch the collection_quote post action
+    }
+
     if (!user) {
         return <Redirect to="/" />;
     }
@@ -102,6 +123,11 @@ const Explore = () => {
     return (
         <div className="user_main_container">
             <UserNavBar />
+
+            <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                <h1>Edit Quote</h1>
+            </Modal>
+
             <div className="swipe_text_container"><span>Swipe left or right!</span></div>
             {filteredArr.length !== 0 ?
                 <div className="card_container">
@@ -111,11 +137,18 @@ const Explore = () => {
                             <div className="tinder_card_author">~ {quote.author}</div>
                         </TinderCard>
                     ))}
+
+
                 </div> :
                 <div className="no_cards_container">
                     <span>Currently no more quotes...</span>
                     <span>Create your own quote!</span>
                 </div>}
+
+            <div onClick={() => console.log('hit')} className="bookmark_container">
+                <i className="far fa-bookmark"></i>
+            </div>
+
             {/* <div className='buttons'>
                 <button onClick={() => swipe('left')}>Swipe left!</button>
                 <button onClick={() => swipe('right')}>Swipe right!</button>

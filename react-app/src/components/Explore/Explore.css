@@ -10,13 +10,35 @@
     background-color: transparent;
     margin: auto;
     margin-top: 4%;
-    width: 300px;
-    height: 200px;
+    width: 30%;
+    height: 24%;
     text-align: left;
     overflow: hidden;
     padding: 5px;
 }
 
+/* Bookmark icon */
+.bookmark_container {
+    position: relative;
+    margin: 0px auto;
+    margin-top: 5px;
+    border: 1px solid rgb(70, 69, 69);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.fa-bookmark {
+    font-size: 2em;
+    position: absolute;
+    top: 10px;
+    left: 13px;
+    cursor: pointer;
+}
+
+
+/* no cards container */
 .no_cards_container {
     background-color: transparent;
     margin: auto;
@@ -30,13 +52,11 @@
 }
 
 
-/* tinder card  */
+/*------tinder card--------*/
 .tinder_card {
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     cursor:grab;
-    /* width: 40vw; */
-    /* height: 20vh; */
 }
 
 .tinder_card_quote,
@@ -58,13 +78,17 @@
 }
 
 .heart {
-    margin: auto;
     color: red;
     font-size: 5em;
     width: 50px;
     box-sizing: content-box;
     opacity: 0;
     transition: opacity 200ms ease-in-out;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .swipe_text_container {
