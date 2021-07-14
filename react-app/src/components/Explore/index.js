@@ -15,7 +15,7 @@ const Explore = () => {
     const quotes = useSelector(state => state.quote);
     const favorites = useSelector(state => state.favorite);
     const favoritesArr = Object.values(favorites)
-    const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user.id);
+    const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user?.id);
 
     // console.log('----favorites: ', favoritesArr);
     // console.log('quotes arr: ', quotesArr);
@@ -75,7 +75,7 @@ const Explore = () => {
 
     useEffect(() => {
         dispatch(getQuotes())
-        dispatch(getFavorites(user.id))
+        dispatch(getFavorites(user?.id))
     }, [dispatch])
 
     const onSwipe = (direction, quote) => {
