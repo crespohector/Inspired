@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import UserNavBar from './UserNavBar';
 import { getQuotes } from '../../store/quote';
 import { favoriteQuote, getFavorites } from '../../store/favorite';
+import { getCollections } from '../../store/collection';
+import {createCollectionQuote} from '../../store/collection_quote';
 import Footer from '../SplashPage/Footer';
 
 import Modal from "react-modal";
@@ -17,11 +19,14 @@ const Explore = () => {
     const user = useSelector(state => state.session.user);
     const quotes = useSelector(state => state.quote);
     const favorites = useSelector(state => state.favorite);
+    const collections = useSelector(state => state.collection)
+    const collectionsArr = Object.values(collections);
     const favoritesArr = Object.values(favorites)
     const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user.id);
 
     // console.log('----favorites: ', favoritesArr);
     // console.log('quotes arr: ', quotesArr);
+    console.log('----collections: ', collectionsArr);
 
     const filteredArr = []
 
@@ -40,42 +45,6 @@ const Explore = () => {
 
     // console.log('----filtered arr: ', filteredArr);
 
-
-
-    // const [userQuotes, setUserQuotes] = useState(quotesArr)
-    // const [lastDirection, setLastDirection] = useState()
-
-    // const quoteRefs = useMemo(() => Array(quotesArr.length).fill(0).map(i => React.createRef()), [])
-    // const alreadyRemoved = [];
-    // let quotesState = quotesArr;
-
-    // const swiped = (direction, nameToDelete) => {
-    //     console.log('removing: ' + nameToDelete)
-    //     setLastDirection(direction)
-    //     alreadyRemoved.push(nameToDelete)
-    // }
-
-    // const outOfFrame = (author) => {
-    //     console.log(author + ' left the screen!')
-    //     quotesState = quotesState.filter(quote => quote.author !== author)
-    //     setUserQuotes(quotesState)
-    // }
-
-    // const swipe = (dir) => {
-    //     const cardsLeft = quotesArr.filter(quote => !alreadyRemoved.includes(quote.author))
-    //     if (cardsLeft.length) {
-    //         console.log('to be removed: ', cardsLeft[0].author)
-    //         const toBeRemoved = cardsLeft[0].author // Find the card object to be removed
-    //         console.log('index: ', quotesArr.map(quote => quote.author).indexOf(toBeRemoved))
-    //         const index = quotesArr.map(quote => quote.author).indexOf(toBeRemoved) // Find the index of which to make the reference to
-    //         console.log('pushed: ', alreadyRemoved.push(toBeRemoved))
-    //         alreadyRemoved.push(toBeRemoved) // Make sure the next card gets removed next time if this card do not have time to exit the screen
-    //         console.log('quote ref: ', quoteRefs[index])
-    //         // quoteRefs[index].current.swipe(dir) // Swipe the card!
-    //     }
-    // }
-
-
     useEffect(() => {
         dispatch(getQuotes())
         dispatch(getFavorites(user.id))
@@ -90,9 +59,13 @@ const Explore = () => {
         if (direction === "right") {
             dispatch(favoriteQuote(user.id, quote.id))
             const div = document.querySelector('.heart');
+            div.style.display = "inline-block";
             div.style.opacity = 1;
             setTimeout(() => {
                 div.style.opacity = 0;
+            }, 200)
+            setTimeout(() => {
+                div.style.display = "none";
             }, 400)
         }
     }
@@ -101,13 +74,14 @@ const Explore = () => {
         // console.log(myIdentifier + ' left the screen')
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const addQuoteToCollection = () => {
         setModalIsOpen(false)
+        dispatch(createCollectionQuote()) //collection id and quote id
     }
 
     const onClickOpenModal = () => {
         setModalIsOpen(true);
+        dispatch(getCollections(user.id))
         //inside the modal...
         //1.) we want to dispatch a list of all the collections from the user
         //2.) render all the collection similarly to the quotes css style
@@ -125,7 +99,13 @@ const Explore = () => {
             <UserNavBar />
 
             <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                <h1>Edit Quote</h1>
+                <h1>Save this quote to a collection!</h1>
+                {collectionsArr.map(collection => (
+                    <div key={collection.id} className="favorite-body_content-content">
+                        <span className="favorite-body_content-content_favorite">{collection.title}</span>
+                        <span className="favorite-body_content-content_option" onClick={addQuoteToCollection}><i class="fas fa-plus-circle"></i></span>
+                    </div>
+                ))}
             </Modal>
 
             <div className="swipe_text_container"><span>Swipe left or right!</span></div>
@@ -138,21 +118,17 @@ const Explore = () => {
                         </TinderCard>
                     ))}
 
-
                 </div> :
                 <div className="no_cards_container">
                     <span>Currently no more quotes...</span>
                     <span>Create your own quote!</span>
                 </div>}
 
-            <div onClick={() => console.log('hit')} className="bookmark_container">
+            {/* <div onClick={() => console.log('hit')} className="bookmark_container">
                 <i className="far fa-bookmark"></i>
-            </div>
-
-            {/* <div className='buttons'>
-                <button onClick={() => swipe('left')}>Swipe left!</button>
-                <button onClick={() => swipe('right')}>Swipe right!</button>
             </div> */}
+            <button onClick={onClickOpenModal} type="button" className="bookmark_btn"><i className="far fa-bookmark"></i></button>
+
             <div className="heart"><i className="fas fa-heart"></i></div>
             <Footer />
         </div>

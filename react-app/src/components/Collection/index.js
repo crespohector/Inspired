@@ -25,7 +25,6 @@ function Collection() {
 
   const collection_quotes = useSelector(state => state.collection_quote);
   const collection_quotes_arr = Object.values(collection_quotes);
-  // console.log('----collection quotes: ', collection_quotes_arr);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +68,6 @@ function Collection() {
 
   const onClickDeleteColQuote = (quote) => {
     const quoteId = quote.id;
-    // console.log('=======quote=====: ', quoteId, '---colltion: ', collectionId)
     dispatch(removeQuote(collectionId, quoteId));
 }
 
