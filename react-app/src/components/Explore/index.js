@@ -46,13 +46,11 @@ const Explore = () => {
             }
         }
     }
-    console.log('----filtered arr: ', filteredArr);
 
     const onSwipe = (direction, quote) => {
 
         count += 1
-        // console.log('----------on swipe array: ', filteredArr[count].id);
-        setQuoteId(filteredArr[count].id)
+        setQuoteId(filteredArr[count]?.id)
 
         //check if the user swiped right like, if left then reject
         if (direction === "right") {
@@ -76,7 +74,10 @@ const Explore = () => {
     const addQuoteToCollection = (collection) => {
         setModalIsOpen(false)
         // console.log('------ids: ', collection.id, quoteId)
-        dispatch(createCollectionQuote(collection.id, quoteId))
+
+        if (quoteId) {
+            dispatch(createCollectionQuote(collection.id, quoteId))
+        }
     }
 
     const onClickOpenModal = () => {
@@ -84,16 +85,8 @@ const Explore = () => {
         dispatch(getCollections(user.id))
 
         if (quoteId === 0) {
-            setQuoteId(filteredArr[0].id)
+            setQuoteId(filteredArr[0]?.id)
         }
-
-        console.log('on click button ', filteredArr)
-
-        //1.) we want to dispatch a list of all the collections from the user
-        //2.) render all the collection similarly to the quotes css style
-        //3.) render a checkbox to each collection
-        //4.) create a submit btn
-        //5.) dispatch the collection_quote post action
     }
 
     if (!user) {
@@ -109,7 +102,7 @@ const Explore = () => {
                 {collectionsArr.map(collection => (
                     <div key={collection.id} className="favorite-body_content-content">
                         <span className="favorite-body_content-content_favorite">{collection.title}</span>
-                        <span className="favorite-body_content-content_option" onClick={() => addQuoteToCollection(collection)}><i className="fas fa-plus-circle"></i></span>
+                        <span className="plus_icon" onClick={() => addQuoteToCollection(collection)}><i className="fas fa-plus-circle"></i></span>
                     </div>
                 ))}
             </Modal>
@@ -130,9 +123,6 @@ const Explore = () => {
                     <span>Create your own quote!</span>
                 </div>}
 
-            {/* <div onClick={() => console.log('hit')} className="bookmark_container">
-                <i className="far fa-bookmark"></i>
-            </div> */}
             <button onClick={onClickOpenModal} type="button" className="bookmark_btn"><i className="far fa-bookmark"></i></button>
 
             <div className="heart"><i className="fas fa-heart"></i></div>
