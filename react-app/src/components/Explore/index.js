@@ -22,13 +22,14 @@ const Explore = () => {
     const collections = useSelector(state => state.collection)
     const collectionsArr = Object.values(collections);
     const favoritesArr = Object.values(favorites)
-    const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user.id);
+    const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user?.id);
+
     const filteredArr = []
     let count = 0;
 
     useEffect(() => {
         dispatch(getQuotes())
-        dispatch(getFavorites(user.id))
+        dispatch(getFavorites(user?.id))
     }, [dispatch])
 
     if (favoritesArr.length) {
