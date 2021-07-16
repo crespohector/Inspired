@@ -17,19 +17,7 @@
     padding: 5px;
 }
 
-/* Bookmark icon */
-.bookmark_container {
-    position: relative;
-    margin: 0px auto;
-    margin-top: 5px;
-    border: 1px solid rgb(70, 69, 69);
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-
+/* Bookmark button */
 .bookmark_btn {
     display: block;
     border-radius: 20px;
@@ -37,12 +25,18 @@
     height: 40px;
     background-color: rgba(255, 255, 255, 0.5);
     margin: 0px auto;
+    margin-top: 5px;
 }
 
 .fa-bookmark {
     font-size: 1.5em;
 }
 
+.plus_icon {
+    cursor: pointer;
+    float: right;
+    color: rgb(8, 170, 8);
+}
 
 /* no cards container */
 .no_cards_container {
