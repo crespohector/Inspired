@@ -24,6 +24,7 @@ const Explore = () => {
     const favoritesArr = Object.values(favorites)
     const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user.id);
     const filteredArr = []
+    let count = 0;
 
     useEffect(() => {
         dispatch(getQuotes())
@@ -47,10 +48,10 @@ const Explore = () => {
     console.log('----filtered arr: ', filteredArr);
 
     const onSwipe = (direction, quote) => {
-        // console.log('You swiped: ' + direction)
 
-        // setQuoteId(quote.id)
-        console.log('---on swipe array: ', filteredArr.length );
+        count += 1
+        // console.log('----------on swipe array: ', filteredArr[count].id);
+        setQuoteId(filteredArr[count].id)
 
         //check if the user swiped right like, if left then reject
         if (direction === "right") {
@@ -73,8 +74,8 @@ const Explore = () => {
 
     const addQuoteToCollection = (collection) => {
         setModalIsOpen(false)
-        console.log('------ids: ', collection.id, quoteId)
-        // dispatch(createCollectionQuote(collection.id, quoteId))
+        // console.log('------ids: ', collection.id, quoteId)
+        dispatch(createCollectionQuote(collection.id, quoteId))
     }
 
     const onClickOpenModal = () => {
@@ -97,8 +98,6 @@ const Explore = () => {
     if (!user) {
         return <Redirect to="/" />;
     }
-
-    // console.log('---state variable quote id: ', quoteId)
 
     return (
         <div className="user_main_container">
