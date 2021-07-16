@@ -5,7 +5,7 @@ import UserNavBar from './UserNavBar';
 import { getQuotes } from '../../store/quote';
 import { favoriteQuote, getFavorites } from '../../store/favorite';
 import { getCollections } from '../../store/collection';
-import {createCollectionQuote} from '../../store/collection_quote';
+import { createCollectionQuote } from '../../store/collection_quote';
 import Footer from '../SplashPage/Footer';
 
 import Modal from "react-modal";
@@ -23,37 +23,34 @@ const Explore = () => {
     const collectionsArr = Object.values(collections);
     const favoritesArr = Object.values(favorites)
     const quotesArr = Object.values(quotes).filter(quote => quote.owner_id === null || quote.owner_id === user.id);
-
-    // console.log('----favorites: ', favoritesArr);
-    // console.log('quotes arr: ', quotesArr);
-    console.log('----collections: ', collectionsArr);
-
     const filteredArr = []
-
-    for (let i = 0; i < quotesArr.length; i++) {
-        let bool = true;
-        for (let j = 0; j < favoritesArr.length; j++) {
-            if (quotesArr[i].id === favoritesArr[j].id) {
-                bool = false;
-                break;
-            }
-        }
-        if (bool) {
-            filteredArr.push(quotesArr[i]);
-        }
-    }
-
-    // console.log('----filtered arr: ', filteredArr);
 
     useEffect(() => {
         dispatch(getQuotes())
         dispatch(getFavorites(user.id))
     }, [dispatch])
 
+    if (favoritesArr.length) {
+        for (let i = 0; i < quotesArr.length; i++) {
+            let bool = true;
+            for (let j = 0; j < favoritesArr.length; j++) {
+                if (quotesArr[i].id === favoritesArr[j].id) {
+                    bool = false;
+                    break;
+                }
+            }
+            if (bool) {
+                filteredArr.push(quotesArr[i]);
+            }
+        }
+    }
+    console.log('----filtered arr: ', filteredArr);
+
     const onSwipe = (direction, quote) => {
         // console.log('You swiped: ' + direction)
-        // console.log('quote: ' + quote.id)
-        setQuoteId(quote.id)
+
+        // setQuoteId(quote.id)
+        console.log('---on swipe array: ', filteredArr.length );
 
         //check if the user swiped right like, if left then reject
         if (direction === "right") {
@@ -74,15 +71,22 @@ const Explore = () => {
         // console.log(myIdentifier + ' left the screen')
     }
 
-    const addQuoteToCollection = () => {
+    const addQuoteToCollection = (collection) => {
         setModalIsOpen(false)
-        dispatch(createCollectionQuote()) //collection id and quote id
+        console.log('------ids: ', collection.id, quoteId)
+        // dispatch(createCollectionQuote(collection.id, quoteId))
     }
 
     const onClickOpenModal = () => {
         setModalIsOpen(true);
         dispatch(getCollections(user.id))
-        //inside the modal...
+
+        if (quoteId === 0) {
+            setQuoteId(filteredArr[0].id)
+        }
+
+        console.log('on click button ', filteredArr)
+
         //1.) we want to dispatch a list of all the collections from the user
         //2.) render all the collection similarly to the quotes css style
         //3.) render a checkbox to each collection
@@ -94,6 +98,8 @@ const Explore = () => {
         return <Redirect to="/" />;
     }
 
+    // console.log('---state variable quote id: ', quoteId)
+
     return (
         <div className="user_main_container">
             <UserNavBar />
@@ -103,7 +109,7 @@ const Explore = () => {
                 {collectionsArr.map(collection => (
                     <div key={collection.id} className="favorite-body_content-content">
                         <span className="favorite-body_content-content_favorite">{collection.title}</span>
-                        <span className="favorite-body_content-content_option" onClick={addQuoteToCollection}><i class="fas fa-plus-circle"></i></span>
+                        <span className="favorite-body_content-content_option" onClick={() => addQuoteToCollection(collection)}><i className="fas fa-plus-circle"></i></span>
                     </div>
                 ))}
             </Modal>
