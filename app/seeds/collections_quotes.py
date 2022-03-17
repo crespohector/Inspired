@@ -2,6 +2,21 @@ from app.models import db, Collection, Quote
 
 # Adds a demo user, you can add other users here if you want
 def seed_collections_quotes():
+    #listing1 = Listing()
+    #User1 = User()
+
+    # listing1.users.append(User1)
+    User1.listings_favorites.append(listing1)
+        User1.listings_favorites.append(listing2)
+    User1.listings_favorites.append(listing3)
+    User1.listings_favorites.append(listing4)
+
+    (1,1)
+    (1,2)
+    (1,10)
+    (2,1)
+    (3,1)
+
 
     #query for the first 4 collections and append each into a list
     collections_list = []
