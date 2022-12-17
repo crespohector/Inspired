@@ -25,7 +25,6 @@ const removeQuote = (data) => ({
 export const getQuotes = () => async (dispatch) => {
     const response = await fetch('/api/quotes/')
     const quotes = await response.json()
-    // console.log("-------quotes------: ", quotes)
     dispatch(getQuote(quotes))
     return ;
   }
@@ -34,7 +33,6 @@ export const getQuotes = () => async (dispatch) => {
 export const getQuotesByUser = (userId) => async (dispatch) => {
     const response = await fetch(`/api/quotes/user/${userId}/`)
     const quotes = await response.json();
-    // console.log("----------user quotes-------: ", quotes);
     dispatch(getQuote(quotes));
     return ;
 }
@@ -52,7 +50,6 @@ export const createQuote = (content, author, userId) => async (dispatch) => {
         })
     });
     const quote = await response.json();
-    // console.log('-----------POST NEW QUOTE--------: ', quote);
     dispatch(addQuote(quote))
     return ;
 }
@@ -70,7 +67,6 @@ export const editQuote = (content, author, id) => async (dispatch) => {
         })
     });
     const quote = await response.json();
-    // console.log('----------edit quote----------', quote)
     dispatch(addQuote(quote))
     return ;
 }
@@ -81,7 +77,6 @@ export const deleteQuote = (id) => async (dispatch) => {
         method: 'DELETE',
     });
     const quote = await response.json();
-    // console.log('----------DELETED QUOTE----------: ', quote)
     dispatch(removeQuote(quote))
     return ;
 }

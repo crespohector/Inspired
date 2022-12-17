@@ -1,4 +1,4 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .favorite import favorite
@@ -6,21 +6,23 @@ from .favorite import favorite
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
+  if environment == "production":
+    __table_args__ = {'schema': SCHEMA}
+
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
 
+  # One to Many
   collections = db.relationship("Collection", back_populates="users")
-
+  # One to Many
   quotes = db.relationship("Quote", back_populates="users")
-
+  # Many to Many
   quote_favorites = db.relationship("Quote",
   secondary=favorite,
   back_populates="users"
   )
-
-  dislikes = db.relationship("Dislike", back_populates="users")
 
   @property
   def password(self):

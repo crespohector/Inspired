@@ -8,6 +8,13 @@ from sqlalchemy import pool
 
 from alembic import context
 
+import os
+environment = os.environ.get("FLASK_ENV")
+schema = os.environ.get("SCHEMA")
+
+# Now, you will adjust the migrations/env.py file to create a new schema within the
+# Postgres database, and set the search path to that schema name.
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -86,7 +93,14 @@ def run_migrations_online():
             **current_app.extensions['migrate'].configure_args
         )
 
+        #create a schema
+        if environment == "production":
+            connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
+
+        # set search path to the schema only in production
         with context.begin_transaction():
+            if environment == "production":
+                context.execute(f"SET search_path TO {SCHEMA}")
             context.run_migrations()
 
 

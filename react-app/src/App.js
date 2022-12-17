@@ -21,7 +21,6 @@ function App() {
   const user = useSelector(state => state.session.user)
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  console.log('HELLO WORLD')
 
   useEffect(() => {
     (async() => {

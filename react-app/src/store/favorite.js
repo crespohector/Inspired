@@ -26,7 +26,6 @@ const removeFavorite = (data) => ({
 export const getFavorites = (userId) => async (dispatch) => {
     const response = await fetch(`/api/favorites/user/${userId}/`)
     const favorites = await response.json()
-    // console.log('---------favorites-------: ', favorites)
     dispatch(getFavorite(favorites))
     return;
 }
@@ -41,7 +40,6 @@ export const favoriteQuote = (userId, quoteId) => async (dispatch) => {
         body: JSON.stringify({ quoteId })
     });
     const quote = await response.json()
-    // console.log('--------new favorite quote-----:', quote);
     dispatch(createFavorite(quote))
     return;
 }
@@ -56,7 +54,6 @@ export const unlikeQuote = (userId, quoteId) => async (dispatch) => {
         body: JSON.stringify({ quoteId })
     });
     const quote = await response.json()
-    // console.log('--------removed favorite quote-----:', quote);
     dispatch(removeFavorite(quote))
     return;
 }

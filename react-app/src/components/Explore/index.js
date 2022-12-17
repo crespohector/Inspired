@@ -68,12 +68,10 @@ const Explore = () => {
     }
 
     const onCardLeftScreen = (myIdentifier) => {
-        // console.log(myIdentifier + ' left the screen')
     }
 
     const addQuoteToCollection = (collection) => {
         setModalIsOpen(false)
-        // console.log('------ids: ', collection.id, quoteId)
 
         if (quoteId) {
             dispatch(createCollectionQuote(collection.id, quoteId))

@@ -11,7 +11,7 @@ def seed_users():
 
     db.session.add(demo)
 
-    for i in range(0,20):
+    for i in range(0,3):
         person = User(username=faker.name(), email=faker.email(), password=faker.password(length=12))
         db.session.add(person)
 

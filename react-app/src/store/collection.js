@@ -25,7 +25,6 @@ const removeCollection = (data) => ({
 export const getCollections = (userId) => async (dispatch) => {
     const response = await fetch(`/api/collections/user/${userId}/`)
     const collection = await response.json()
-    // console.log('---------collections-------: ', collection)
     dispatch(getCollection(collection))
     return ;
 }
@@ -40,7 +39,6 @@ export const createCollection = (title, userId) => async (dispatch) => {
         body: JSON.stringify({title})
     });
     const collection = await response.json();
-    // console.log('-------collection-----: ', collection);
     dispatch(addCollection(collection));
     return ;
 }
@@ -55,7 +53,6 @@ export const editCollection = (title, id) => async (dispatch) => {
         body: JSON.stringify({title})
     });
     const collection = await response.json();
-    // console.log('-----edit collection------', collection);
     dispatch(addCollection(collection));
     return ;
 }
@@ -66,7 +63,6 @@ export const deleteCollection = (id) => async (dispatch) => {
         method: 'DELETE',
     });
     const collection = await response.json();
-    // console.log('----deleted collection-------: ', collection);
     dispatch(removeCollection(collection));
     return ;
 }

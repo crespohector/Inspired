@@ -4,9 +4,6 @@ import requests
 data = requests.get("https://zenquotes.io/api/quotes")
 quotes = data.json()
 
-# for quote in response:
-#     print(quote['q'])
-
 def seed_quotes():
 
     for quote in quotes:

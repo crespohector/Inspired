@@ -21,7 +21,7 @@ const SplashPage = () => {
                     Empower yourself by verbally affirming your goals and ambitions
                 </p>
                 <p className="header-2">
-                    Strengthen the connection between your unconscious mind and your consious mind
+                    Strengthen the connection between your unconscious mind and your conscious mind
                 </p>
                 <p className="header-3">
                     Challenge yourself to grow and become the person you envision

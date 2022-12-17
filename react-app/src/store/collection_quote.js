@@ -26,7 +26,6 @@ const removeCollectionQuote = (data) => ({
 export const getCollectionQuotes = (collectionId) => async (dispatch) => {
     const response = await fetch(`/api/collections/${collectionId}/quotes/`)
     const quotes = await response.json()
-    // console.log('---------collection-quotes-------: ', quotes)
     dispatch(getCollectionQuote(quotes))
     return ;
 }
@@ -41,7 +40,6 @@ export const createCollectionQuote = (collectionId, quoteId) => async (dispatch)
         body: JSON.stringify({quoteId})
     });
     const quote = await response.json();
-    // console.log('------added quote to collection----', quote);
     dispatch(addCollectionQuote(quote));
     return ;
 }
@@ -56,7 +54,6 @@ export const removeQuote = (collectionId, quoteId) => async (dispatch) => {
         body: JSON.stringify({quoteId})
     });
     const quote = await response.json()
-    // console.log('-----removed quote from collection------: ', quote)
     dispatch(removeCollectionQuote(quote));
     return ;
 }
