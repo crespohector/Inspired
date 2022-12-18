@@ -5,7 +5,7 @@ class Collection(db.Model):
     __tablename__ = 'collections'
 
     if environment == "production":
-    __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150), nullable=False)
