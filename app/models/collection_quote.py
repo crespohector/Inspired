@@ -1,7 +1,7 @@
 from .db import  db, environment, SCHEMA, add_prefix_for_prod
 
 collection_quote = db.Table(
-    add_prefix_for_prod("collections_quotes"),
+    "collections_quotes",
     db.Column("collection_id",
     db.Integer,
     db.ForeignKey(add_prefix_for_prod("collections.id")),
@@ -13,3 +13,6 @@ collection_quote = db.Table(
     primary_key=True
     )
 )
+
+if environment == "production":
+    collection_quote.schema = SCHEMA
