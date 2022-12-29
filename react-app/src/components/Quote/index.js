@@ -5,7 +5,6 @@ import Modal from "react-modal";
 import { getQuotesByUser, editQuote, deleteQuote } from '../../store/quote';
 import UserNavBar from '../Explore/UserNavBar';
 import Footer from '../SplashPage/Footer';
-// import QuoteEditModal from './QuoteEditModal';
 import CreateQuote from './CreateQuote';
 
 import "./Quote.css";
@@ -71,16 +70,15 @@ function Quote() {
       <UserNavBar />
       <div className="quote-body_content" id="scrollbar">
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-          <h1>Edit Quote</h1>
-          <form onSubmit={onSubmit} className="form">
-            <label htmlFor="content">Content</label>
-            <input value={content} onChange={e => setContent(e.target.value)} placeholder="Edit quote here..." />
-            <input value={author} onChange={e => setAuthor(e.target.value)} placeholder="Edit author here..." />
-            <button onClick={() => setModalIsOpen(false)}>Close</button>
-            <button type="submit">Submit quote</button>
+          <form onSubmit={onSubmit} className="was-validated form">
+            <label htmlFor="quote-input" className="form-label"><strong>Quote*</strong></label>
+            <textarea id="quote-input" className="form-control" value={content} onChange={e => setContent(e.target.value)} placeholder="Edit quote here..." required></textarea>
+            <label htmlFor="author-input" className="form-label"><strong>Author</strong></label>
+            <input type="text" id="author-input" className="form-control" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Edit author here..." />
+            <button className="btn btn-outline-secondary" id="quote-button" onClick={() => setModalIsOpen(false)}>Close</button>
+            <button id="quote-button" className="btn btn-outline-dark" type="submit">Edit This Quote</button>
           </form>
-          <h1>Delete Quote</h1>
-          <button onClick={onClickDeleteQuote}>Delete This Quote</button>
+          <button className="btn btn-outline-danger" onClick={onClickDeleteQuote}>Delete This Quote</button>
         </Modal>
 
         <CreateQuote />
@@ -100,13 +98,3 @@ function Quote() {
   );
 }
 export default Quote;
-
-
-// {
-//   showMenu && (
-//     <div className="quote-body_content-settings">
-//       <p onClick={() => setModalIsOpen(true)}>Edit</p>
-//       <p onClick={() => setModalIsOpen(true)}>Delete</p>
-//     </div>
-//   )
-// }

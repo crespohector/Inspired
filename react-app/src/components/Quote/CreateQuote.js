@@ -13,7 +13,6 @@ function CreateQuoteBtn() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [content, setContent] = useState('');
     const [author, setAuthor] = useState('');
-    const [errors, setErrors] = useState([]);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -23,31 +22,17 @@ function CreateQuoteBtn() {
         setModalIsOpen(false)
     }
 
-    useEffect(() => {
-        const errors = [];
-        if (content.length < 15) {
-            errors.push("Content field must be greater than 15 characters");
-        }
-        setErrors(errors);
-    }, [content])
-
-
     return (
         <>
             <button className="post_quote_btn" onClick={() => setModalIsOpen(true)}>Create Quote</button>
             <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                <h1>Add Your Own Quote!</h1>
-                <ul className="errors">
-                    {errors.map(error => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-                <form onSubmit={onSubmit} className="form">
-                    <label htmlFor="content">Content</label>
-                    <input value={content} onChange={e => setContent(e.target.value)} placeholder="Enter quote here..." required />
-                    <input value={author} onChange={e => setAuthor(e.target.value)} placeholder="Enter author here..." />
-                    <button onClick={() => setModalIsOpen(false)}>Close</button>
-                    <button type="submit" disabled={errors.length > 0}>Submit quote</button>
+                <form onSubmit={onSubmit} className="was-validated form">
+                    <label htmlFor="quote-input" className="form-label"><strong>Quote*</strong></label>
+                    <textarea id="quote-input" className="form-control" value={content} onChange={e => setContent(e.target.value)} placeholder="Enter quote here..."  required></textarea>
+                    <label htmlFor="author-input" className="form-label"><strong>Author</strong></label>
+                    <input type='text' id="author-input" className='form-control' value={author} onChange={e => setAuthor(e.target.value)} placeholder="<Optional> Enter author name here..." />
+                    <button  className="btn btn-outline-secondary" id='quote-button' onClick={() => setModalIsOpen(false)}>Close</button>
+                    <button type="submit" className="btn btn-outline-dark">Create New Quote</button>
                 </form>
             </Modal>
         </>

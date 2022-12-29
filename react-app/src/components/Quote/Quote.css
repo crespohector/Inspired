@@ -85,23 +85,24 @@
 }
 
 .modal {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
     position: absolute;
-    top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid #ccc;
     background-color: #fff;
     overflow: auto;
     border-radius: 4px;
     outline: none;
-    padding: 20px;
-    margin: 5% auto;
+    padding: 30px 0px;
     width: 40%;
-
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+    height: 45%;
 }
 
 
@@ -124,10 +125,24 @@
 .form {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    margin: 0px auto;
 }
 
-.form input, button{
-    margin: 2px 0px;
+#author-input {
+    margin-bottom: 30px;
+}
+
+.form > input, textarea{
+    margin-bottom: 10px;
+}
+
+#quote-button {
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 425px) {
+    .modal {
+        width: 95%;
+    }
+
 }
