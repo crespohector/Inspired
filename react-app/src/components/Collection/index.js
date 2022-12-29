@@ -15,7 +15,6 @@ function Collection() {
   const [collectionId, setCollectionId] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [secondModalIsOpen, setSecondModalIsOpen] = useState(false);
-  const [errors, setErrors] = useState([]);
 
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -45,15 +44,6 @@ function Collection() {
   }
 
   useEffect(() => {
-    const errors = [];
-    if (title.length < 15) {
-      errors.push("Title field must be greater than 15 characters");
-    }
-    setErrors(errors);
-  }, [title])
-
-
-  useEffect(() => {
     dispatch(getCollections(userId))
   }, [dispatch])
 
@@ -81,16 +71,11 @@ function Collection() {
       <div className="collection-body_content" id="scrollbar">
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <h1>Edit Collection</h1>
-          <ul className="errors">
-            {errors.map(error => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
           <form onSubmit={onSubmit} className="form">
             <label htmlFor="collection">Collection</label>
             <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Edit collection here..." />
             <button onClick={() => setModalIsOpen(false)}>Close</button>
-            <button type="submit" disabled={errors.length > 0}>Submit Collection</button>
+            <button type="submit" >Submit Collection</button>
           </form>
           <h1>Delete Collection</h1>
           <button onClick={onClickDelete}>Delete This Collection</button>

@@ -72,9 +72,9 @@ function Quote() {
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <form onSubmit={onSubmit} className="was-validated form">
             <label htmlFor="quote-input" className="form-label"><strong>Quote*</strong></label>
-            <textarea id="quote-input" className="form-control" value={content} onChange={e => setContent(e.target.value)} placeholder="Edit quote here..." required></textarea>
+            <textarea id="quote-input" className="form-control" value={content} onChange={e => setContent(e.target.value)} placeholder="Edit quote here..." rows={3} required maxLength={255}></textarea>
             <label htmlFor="author-input" className="form-label"><strong>Author</strong></label>
-            <input type="text" id="author-input" className="form-control" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Edit author here..." />
+            <input type="text" id="author-input" className="form-control" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Edit author here..." maxLength={150} />
             <button className="btn btn-outline-secondary" id="quote-button" onClick={() => setModalIsOpen(false)}>Close</button>
             <button id="quote-button" className="btn btn-outline-dark" type="submit">Edit This Quote</button>
           </form>
@@ -85,11 +85,11 @@ function Quote() {
         <span className="quote-body_content-header">My Quotes</span>
         {quotesArr.map(quote => (
           <div key={quote.id} className="quote-body_content-content">
-            <span className="quote-body_content-content_quote">{quote.content}</span>
-            <span className="quote-body_content-content_option" onClick={() => onClickOptions(quote)}>
+            <div className="quote-body_content-content_quote">{quote.content}</div>
+            <div className="quote-body_content-content_option" onClick={() => onClickOptions(quote)}>
               <i className="fas fa-edit"></i>
-            </span>
-            <span className="quote-body_content-content_author">- {quote.author}</span>
+            </div>
+            <div className="quote-body_content-content_author">- {quote.author}</div>
           </div>
         ))}
       </div>
