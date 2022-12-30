@@ -35,9 +35,9 @@ function Favorite() {
           <span className="favorite-body_content-header">Favorites</span>
           {favoritesArr.map(favorite => (
             <div key={favorite.id} className="favorite-body_content-content">
-              <span className="favorite-body_content-content_favorite">{favorite.content}</span>
-              <span className="favorite-body_content-content_option" onClick={() => onClickUnlikeQuote(favorite)}><i className="fas fa-minus-circle"></i></span>
-              <span className="favorite-body_content-content_author">- {favorite.author}</span>
+              <div className="favorite-body_content-content_favorite">{favorite.content}</div>
+              <div className="favorite-body_content-content_option" onClick={() => onClickUnlikeQuote(favorite)}><i className="fas fa-minus-circle"></i></div>
+              <div className="favorite-body_content-content_author">- {favorite.author}</div>
             </div>
           ))}
       </div>

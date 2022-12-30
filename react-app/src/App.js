@@ -14,6 +14,8 @@ import SplashPage from './components/SplashPage';
 import About from './components/About'
 import Explore from './components/Explore';
 
+import "./components/Modals/modal.css";
+
 //Testing purposes
 // import TestApiRoutes from "./components/TestApiRoutes";
 

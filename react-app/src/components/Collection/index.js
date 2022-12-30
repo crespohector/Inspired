@@ -8,7 +8,7 @@ import UserNavBar from '../Explore/UserNavBar';
 import Footer from '../SplashPage/Footer';
 import CreateCollectionBtn from './CreateCollectionBtn';
 
-import "./Collection.css";
+import "./collection.css";
 
 function Collection() {
   const [title, setTitle] = useState('');
@@ -69,25 +69,23 @@ function Collection() {
     <div>
       <UserNavBar />
       <div className="collection-body_content" id="scrollbar">
-        <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-          <h1>Edit Collection</h1>
-          <form onSubmit={onSubmit} className="form">
-            <label htmlFor="collection">Collection</label>
-            <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Edit collection here..." />
-            <button onClick={() => setModalIsOpen(false)}>Close</button>
-            <button type="submit" >Submit Collection</button>
+        <Modal className="modal collections" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+          <form onSubmit={onSubmit} className="was-validated form">
+            <label htmlFor="collection" className='form-label'><strong>Title*</strong></label>
+            <input className='form-control' type='text' id="collection" value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter title here..." required maxLength={100} />
+            <button className="btn btn-outline-secondary" id="cancel_btn" onClick={() => setModalIsOpen(false)}>Close</button>
+            <button className='btn btn-outline-dark' id="cancel_btn" type="submit" >Create new collection</button>
           </form>
-          <h1>Delete Collection</h1>
-          <button onClick={onClickDelete}>Delete This Collection</button>
+          <button className="btn btn-outline-danger" onClick={onClickDelete}>Delete this collection</button>
         </Modal>
 
-        <Modal className="modal" isOpen={secondModalIsOpen} onRequestClose={() => setSecondModalIsOpen(false)}>
-          <h1>All my quotes in a collection!</h1>
+        <Modal className="modal quotes_collections" isOpen={secondModalIsOpen} onRequestClose={() => setSecondModalIsOpen(false)}>
+          <h2>All my quotes in a collection!</h2>
           {collection_quotes_arr.map(quote => (
             <div key={quote.id} className="favorite-body_content-content">
-              <span className="favorite-body_content-content_favorite">{quote.content}</span>
-              <span className="favorite-body_content-content_option" onClick={() => onClickDeleteColQuote(quote)}><i className="fas fa-minus-circle"></i></span>
-              <span className="favorite-body_content-content_author">- {quote.author}</span>
+              <div className="favorite-body_content-content_favorite">{quote.content}</div>
+              <div className="favorite-body_content-content_option" onClick={() => onClickDeleteColQuote(quote)}><i className="fas fa-minus-circle"></i></div>
+              <div className="favorite-body_content-content_author">- {quote.author}</div>
             </div>
           ))}
         </Modal>
@@ -96,8 +94,8 @@ function Collection() {
         <span className="collection-body_content-header">Collections</span>
         {collectionsArr.map(collection => (
           <div key={collection.id} className="collection-body_content-content" onClick={(e) => collectionQuoteModal(e, collection)}>
-            <span className="collection-body_content-content_collection">{collection.title}</span>
-            <span className="collection-body_content-content_option" onClick={() => onClickOptions(collection)}><i className="fas fa-edit" id="fas_fa_edit"></i></span>
+            <div className="collection-body_content-content_collection">{collection.title}</div>
+            <div className="collection-body_content-content_option" onClick={() => onClickOptions(collection)}><i className="fas fa-edit" id="fas_fa_edit"></i></div>
           </div>
         ))}
       </div>

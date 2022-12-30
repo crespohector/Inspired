@@ -21,13 +21,13 @@ function CreateCollectionBtn() {
 
     return (
         <>
-            <button className="post_quote_btn" onClick={() => setModalIsOpen(true)}>Create collection</button>
-            <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            <button className="create_btn" onClick={() => setModalIsOpen(true)}>Create collection</button>
+            <Modal className="modal collections" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <form onSubmit={onSubmit} className="was-validated form">
-                    <label htmlFor="collection" className='form-label'><strong>Collection</strong></label>
-                    <input type='text' id="collection" value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter title here..." required maxLength={40} />
-                    <button onClick={() => setModalIsOpen(false)}>Close</button>
-                    <button type="submit" >Submit collection</button>
+                    <label htmlFor="collection" className='form-label'><strong>Title*</strong></label>
+                    <input className='form-control' type='text' id="collection" value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter title here..." required maxLength={100} />
+                    <button className="btn btn-outline-secondary" id="cancel_btn" onClick={() => setModalIsOpen(false)}>Close</button>
+                    <button className='btn btn-outline-dark' type="submit" >Create new collection</button>
                 </form>
             </Modal>
         </>
