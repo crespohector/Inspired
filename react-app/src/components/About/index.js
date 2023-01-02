@@ -1,14 +1,14 @@
 import React from 'react';
-import UserNavBar from '../Explore/UserNavBar'
+import Navbar from '../Navbar'
 
 import bio from "../../images/bio.JPG";
 import "./About.css";
 
 const About = () => {
-    
+
     return (
         <div className="about_main_wrapper">
-            <UserNavBar />
+            <Navbar />
             <div className="about_me_container">
                 <div className="left_content">
                     <div className="left_content-bio">

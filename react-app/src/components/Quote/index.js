@@ -3,7 +3,7 @@ import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from "react-modal";
 import { getQuotesByUser, editQuote, deleteQuote } from '../../store/quote';
-import UserNavBar from '../Explore/UserNavBar';
+import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 import CreateQuote from './CreateQuote';
 
@@ -67,7 +67,7 @@ function Quote() {
 
   return (
     <div>
-      <UserNavBar />
+      <Navbar />
       <div className="quote-body_content" id="scrollbar">
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <form onSubmit={onSubmit} className="was-validated form">

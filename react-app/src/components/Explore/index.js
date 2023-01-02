@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import UserNavBar from './UserNavBar';
+import Navbar from '../Navbar';
 import { getQuotes } from '../../store/quote';
 import { favoriteQuote, getFavorites } from '../../store/favorite';
 import { getCollections } from '../../store/collection';
@@ -93,7 +93,7 @@ const Explore = () => {
 
     return (
         <div className="user_main_container">
-            <UserNavBar />
+            <Navbar />
 
             <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <h1>Save this quote to a collection!</h1>

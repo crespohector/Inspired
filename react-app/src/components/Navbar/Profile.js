@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 
-import "./Profile.css";
+import "./UserNavbar.css";
 
 const Profile = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -35,9 +35,9 @@ const Profile = () => {
             {showMenu && (
                 <div className="profile-dropdown">
                     <NavLink className="links my_profile_link" to={`/users/${user.id}`}><i className="far fa-user"></i> Profile</NavLink>
-                    <NavLink className="links my_profile_quotes" to={`/users/${user.id}/quotes`}>📝 My Quotes</NavLink>
-                    <NavLink className="links my_profile_favorites" to={`/users/${user.id}/favorites`}>❤️ Favorites</NavLink>
-                    <NavLink className="links my_profile_collections" to={`/users/${user.id}/collections`}>🔖 Collections</NavLink>
+                    <NavLink className="links my_profile_quotes" to={`/users/${user.id}/quotes`}><i class="fas fa-pencil-alt"></i> My Quotes</NavLink>
+                    <NavLink className="links my_profile_favorites" to={`/users/${user.id}/favorites`}><i class="fas fa-heart"></i> Favorites</NavLink>
+                    <NavLink className="links my_profile_collections" to={`/users/${user.id}/collections`}><i class="fas fa-tag"></i> Collections</NavLink>
                     <LogoutButton />
                     <NavLink className="links" id="my_profile_explore" to="/explore">Explore</NavLink>
                 </div>

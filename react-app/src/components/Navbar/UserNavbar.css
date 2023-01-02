@@ -1,0 +1,147 @@
+.UserNavBar {
+    display: flex;
+    border-bottom: 1px solid #b6c79a;
+    background-color: #d8ebb5;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.UserNavBar-wrapper_img_about {
+    display: flex;
+    align-items: center;
+}
+
+.UserNavBar-img {
+    cursor: pointer;
+}
+
+/* Nabar styling if user is not logged in */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-wrapper_img_about{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-wrapper_demo_login {
+    display: flex;
+    align-items: center;
+}
+
+.about_link {
+    text-decoration: none;
+    font-size: 24px;
+    color: rgb(39, 38, 38);
+    font-weight: 600;
+}
+
+.about_link:hover {
+    color: green;
+    text-decoration: underline;
+}
+
+.navbar-img {
+    margin-right: 20px;
+}
+
+.login_btn {
+    text-decoration: none;
+    background-color: #61b15a;
+    color: white;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    border: 1px solid rgb(2, 128, 39);
+    padding: 6px 12px;
+
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.login_btn:hover {
+    background-color: #68b918;
+}
+
+.demo_user {
+    background-color: #61b15a;
+    color: white;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    border: 1px solid rgb(2, 128, 39);
+    padding: 6px 12px;
+}
+
+.demo_user:hover {
+    background-color: #68b918;
+}
+
+/* Profile Button CSS */
+
+.UserNavBar-user_account {
+    display: flex;
+    margin-right: 60px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.UserNavBar-img {
+    margin-right: 20px;
+}
+
+.menu_btn {
+    color: rgb(255, 255, 255);
+    border: 1px solid #0095ff;
+    background-color: #0095ff;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0px 8px;
+}
+
+.menu_btn:hover {
+    background-color: #4092cc;
+}
+
+.profile-dropdown {
+    background-color: white;
+    position: absolute;
+    top: 40px;
+    right: 4px;
+    z-index: 1;
+    width: 150px;
+}
+
+
+.profile-dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.links:hover {
+    background-color: rgb(218, 216, 216);
+}
+
+#my_profile_explore {
+    color: #c84b31;
+    font-size: 1.3em;
+}
+
+.fa-heart {
+    color: red;
+}
+
+.links {
+    padding: 5px 1px 5px 5px;
+    display: block;
+    text-decoration: none;
+    font-size: 1.1em;
+    color:rgb(0, 0, 0);
+    font-weight: 400;
+}

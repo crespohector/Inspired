@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Modal from "react-modal";
 import { getCollections, editCollection, deleteCollection } from '../../store/collection';
 import { getCollectionQuotes, removeQuote } from '../../store/collection_quote';
-import UserNavBar from '../Explore/UserNavBar';
+import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 import CreateCollectionBtn from './CreateCollectionBtn';
 
@@ -67,14 +67,14 @@ function Collection() {
 
   return (
     <div>
-      <UserNavBar />
+      <Navbar />
       <div className="collection-body_content" id="scrollbar">
         <Modal className="modal collections" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <form onSubmit={onSubmit} className="was-validated form">
             <label htmlFor="collection" className='form-label'><strong>Title*</strong></label>
             <input className='form-control' type='text' id="collection" value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter title here..." required maxLength={100} />
             <button className="btn btn-outline-secondary" id="cancel_btn" onClick={() => setModalIsOpen(false)}>Close</button>
-            <button className='btn btn-outline-dark' id="cancel_btn" type="submit" >Create new collection</button>
+            <button className='btn btn-outline-dark' id="cancel_btn" type="submit" >Edit collection</button>
           </form>
           <button className="btn btn-outline-danger" onClick={onClickDelete}>Delete this collection</button>
         </Modal>

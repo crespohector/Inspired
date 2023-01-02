@@ -1,8 +1,8 @@
 import React from 'react';
-import NavBar from './NavBar';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Footer from "./Footer";
+import NavBar from "../Navbar"
 
 import "./SplashPage.css"
 

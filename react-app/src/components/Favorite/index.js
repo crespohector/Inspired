@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import {getFavorites, unlikeQuote} from '../../store/favorite';
-import UserNavBar from '../Explore/UserNavBar';
+import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 
 import "./Favorite.css";
@@ -30,7 +30,7 @@ function Favorite() {
 
   return (
     <div>
-      <UserNavBar />
+      <Navbar />
       <div className="favorite-body_content" id="scrollbar">
           <span className="favorite-body_content-header">Favorites</span>
           {favoritesArr.map(favorite => (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import UserNavBar from '../Explore/UserNavBar';
+import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 
 import "./User.css";
@@ -26,9 +26,12 @@ function User() {
     return null;
   }
 
+  // If not the correct user then redirect to 404 page.
+  // Authenticate the user
+
   return (
     <div>
-      <UserNavBar />
+      <Navbar />
       <div className="profile-body_content">
           <span className="profile-body_content-header">User Profile</span>
           <span className="profile-body_content-username"><strong>Username:</strong> {user.username}</span>
