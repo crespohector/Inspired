@@ -33,7 +33,7 @@ function Favorite() {
       <Navbar />
       <div className="favorite-body_content" id="scrollbar">
           <span className="favorite-body_content-header">Favorites</span>
-          {favoritesArr.map(favorite => (
+          {favoritesArr.reverse().map(favorite => (
             <div key={favorite.id} className="favorite-body_content-content">
               <div className="favorite-body_content-content_favorite">{favorite.content}</div>
               <div className="favorite-body_content-content_option" onClick={() => onClickUnlikeQuote(favorite)}><i className="fas fa-minus-circle"></i></div>

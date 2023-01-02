@@ -34,7 +34,10 @@
 
 .plus_icon {
     cursor: pointer;
-    float: right;
+    padding: 0px 0px 0px 10px;
+    grid-column: 2 / 3;
+    grid-row: 1;
+    word-break: break-all;
     color: rgb(8, 170, 8);
 }
 

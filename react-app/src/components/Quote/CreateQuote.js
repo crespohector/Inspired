@@ -16,9 +16,9 @@ function CreateQuoteBtn() {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        dispatch(createQuote(content, author, userId));
         setContent('');
         setAuthor('');
-        dispatch(createQuote(content, author, userId));
         setModalIsOpen(false)
     }
 

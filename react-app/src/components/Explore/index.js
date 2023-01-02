@@ -75,6 +75,7 @@ const Explore = () => {
 
         if (quoteId) {
             dispatch(createCollectionQuote(collection.id, quoteId))
+            window.alert("Quote has been successfully added to the collection.")
         }
     }
 
@@ -95,9 +96,9 @@ const Explore = () => {
         <div className="user_main_container">
             <Navbar />
 
-            <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            <Modal className="modal quotes_collections" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <h1>Save this quote to a collection!</h1>
-                {collectionsArr.map(collection => (
+                {collectionsArr.reverse().map(collection => (
                     <div key={collection.id} className="favorite-body_content-content">
                         <span className="favorite-body_content-content_favorite">{collection.title}</span>
                         <span className="plus_icon" onClick={() => addQuoteToCollection(collection)}><i className="fas fa-plus-circle"></i></span>
@@ -106,7 +107,7 @@ const Explore = () => {
             </Modal>
 
             <div className="swipe_text_container"><span>Swipe left or right!</span></div>
-            {filteredArr.length !== 0 ?
+            {filteredArr.length > 0 ?
                 <div className="card_container">
                     {filteredArr.map((quote) => (
                         <TinderCard className="tinder_card" key={quote.id} onSwipe={(e) => onSwipe(e, quote)} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['up', 'down']}>
@@ -114,7 +115,6 @@ const Explore = () => {
                             <div className="tinder_card_author">~ {quote.author}</div>
                         </TinderCard>
                     ))}
-
                 </div> :
                 <div className="no_cards_container">
                     <span>Currently no more quotes...</span>

@@ -83,7 +83,7 @@ function Quote() {
 
         <CreateQuote />
         <span className="quote-body_content-header">My Quotes</span>
-        {quotesArr.map(quote => (
+        {quotesArr.reverse().map(quote => (
           <div key={quote.id} className="quote-body_content-content">
             <div className="quote-body_content-content_quote">{quote.content}</div>
             <div className="quote-body_content-content_option" onClick={() => onClickOptions(quote)}>

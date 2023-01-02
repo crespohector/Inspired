@@ -81,7 +81,7 @@ function Collection() {
 
         <Modal className="modal quotes_collections" isOpen={secondModalIsOpen} onRequestClose={() => setSecondModalIsOpen(false)}>
           <h2>All my quotes in a collection!</h2>
-          {collection_quotes_arr.map(quote => (
+          {collection_quotes_arr.reverse().map(quote => (
             <div key={quote.id} className="favorite-body_content-content">
               <div className="favorite-body_content-content_favorite">{quote.content}</div>
               <div className="favorite-body_content-content_option" onClick={() => onClickDeleteColQuote(quote)}><i className="fas fa-minus-circle"></i></div>
@@ -92,7 +92,7 @@ function Collection() {
 
         <CreateCollectionBtn />
         <span className="collection-body_content-header">Collections</span>
-        {collectionsArr.map(collection => (
+        {collectionsArr.reverse().map(collection => (
           <div key={collection.id} className="collection-body_content-content" onClick={(e) => collectionQuoteModal(e, collection)}>
             <div className="collection-body_content-content_collection">{collection.title}</div>
             <div className="collection-body_content-content_option" onClick={() => onClickOptions(collection)}><i className="fas fa-edit" id="fas_fa_edit"></i></div>
