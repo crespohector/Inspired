@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 
 import "./User.css";
@@ -10,7 +9,6 @@ function User() {
 
   return (
     <div>
-      <Navbar />
       <div className="profile-body_content">
           <span className="profile-body_content-header">User Profile</span>
           <span className="profile-body_content-username"><strong>Username:</strong> {user.username}</span>

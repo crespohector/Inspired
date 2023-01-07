@@ -58,13 +58,13 @@ function App() {
         <ProtectedRoute path="/users" exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId/quotes" exact={true} >
+        <ProtectedRoute path="/users/quotes" exact={true} >
           <Quote />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId/favorites" exact={true} >
+        <ProtectedRoute path="/users/favorites" exact={true} >
           <Favorite />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId/collections" exact={true} >
+        <ProtectedRoute path="/users/collections" exact={true} >
           <Collection />
         </ProtectedRoute>
         <Route>

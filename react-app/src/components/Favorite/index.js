@@ -1,36 +1,29 @@
 import React, { useEffect } from "react";
-import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import {getFavorites, unlikeQuote} from '../../store/favorite';
-import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 
 import "./Favorite.css";
 
 function Favorite() {
-  const {userId} = useParams();
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
   const favorites = useSelector(state => state.favorite);
   const favoritesArr = Object.values(favorites)
 
   useEffect(() => {
-    dispatch(getFavorites(userId))
+    dispatch(getFavorites(user.id))
   }, [dispatch])
 
-  if (!user) {
-    return <Redirect to="/" />;
-  }
 
   const onClickUnlikeQuote = (favorite) => {
     const quoteId = favorite.id
-    const intUserId = parseInt(userId)
+    const intUserId = parseInt(user.id)
     dispatch(unlikeQuote(intUserId, quoteId))
   }
 
   return (
     <div>
-      <Navbar />
       <div className="favorite-body_content" id="scrollbar">
           <span className="favorite-body_content-header">Favorites</span>
           {favoritesArr.reverse().map(favorite => (

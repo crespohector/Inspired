@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from "react-modal";
 import { getCollections, editCollection, deleteCollection } from '../../store/collection';
@@ -15,7 +14,6 @@ function Collection() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [secondModalIsOpen, setSecondModalIsOpen] = useState(false);
 
-  const { userId } = useParams();
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
   const collections = useSelector(state => state.collection);
@@ -43,7 +41,7 @@ function Collection() {
   }
 
   useEffect(() => {
-    dispatch(getCollections(userId))
+    dispatch(getCollections(user.id))
   }, [dispatch])
 
   const collectionQuoteModal = (e, collection) => {
@@ -58,10 +56,6 @@ function Collection() {
   const onClickDeleteColQuote = (quote) => {
     const quoteId = quote.id;
     dispatch(removeQuote(collectionId, quoteId));
-}
-
-  if (!user) {
-    return <Redirect to="/" />;
   }
 
   return (

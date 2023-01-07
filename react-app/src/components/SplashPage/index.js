@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Footer from "./Footer";
-import NavBar from "../Navbar"
 
 import "./SplashPage.css"
 
@@ -15,7 +14,6 @@ const SplashPage = () => {
 
     return (
         <div className="main_container">
-            <NavBar />
             <div className="body_container">
                 <p className="header-1">
                     Empower yourself by verbally affirming your goals and ambitions

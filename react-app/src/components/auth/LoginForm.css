@@ -1,5 +1,4 @@
 .login_main_container {
-    /* border: 1px solid blue; */
     display: flex;
     background-color: #88be68;
     min-height: 100vh;
@@ -7,6 +6,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    position: relative;
 }
 
 .content {

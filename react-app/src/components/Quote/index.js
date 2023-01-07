@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from "react-modal";
 import { getQuotesByUser, editQuote, deleteQuote } from '../../store/quote';
-import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 import CreateQuote from './CreateQuote';
 
@@ -12,30 +10,14 @@ import "./Quote.css";
 Modal.setAppElement('#root');
 
 function Quote() {
-  const [content, setContent] = useState(''); //
-  const [author, setAuthor] = useState(''); //
-  const [quoteId, setQuoteId] = useState(null); //
-  // const [showMenu, setShowMenu] = useState(false);
+  const [content, setContent] = useState('');
+  const [author, setAuthor] = useState('');
+  const [quoteId, setQuoteId] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { userId } = useParams();
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
   const quotes = useSelector(state => state.quote);
-  const quotesArr = Object.values(quotes).filter(quote => quote.owner_id == userId);
-
-  // const openMenu = () => {
-  //   if (showMenu) return;
-  //   setShowMenu(true);
-  // };
-
-  // useEffect(() => {
-  //   if (!showMenu) return;
-  //   const closeMenu = () => {
-  //     setShowMenu(false);
-  //   };
-  //   document.addEventListener('click', closeMenu);
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showMenu]);
+  const quotesArr = Object.values(quotes).filter(quote => quote.owner_id == user.id);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -56,18 +38,13 @@ function Quote() {
     setModalIsOpen(false)
   }
 
-
   useEffect(() => {
-    dispatch(getQuotesByUser(userId))
+    dispatch(getQuotesByUser(user.id))
   }, [dispatch])
 
-  if (!user) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <div>
-      <Navbar />
       <div className="quote-body_content" id="scrollbar">
         <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <form onSubmit={onSubmit} className="was-validated form">
