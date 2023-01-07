@@ -107,7 +107,7 @@
 .swipe_text_container {
     color: rgb(0, 0, 0);
     margin: auto;
-    margin-top: 1%;
+    padding-top: 10px;
     font-size: 1.4em;
     width: 200px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

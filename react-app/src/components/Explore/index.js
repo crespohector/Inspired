@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Navbar from '../Navbar';
 import { getQuotes } from '../../store/quote';
 import { favoriteQuote, getFavorites } from '../../store/favorite';
 import { getCollections } from '../../store/collection';
 import { createCollectionQuote } from '../../store/collection_quote';
 import Footer from '../SplashPage/Footer';
+
+import Navbar from "../Navbar";
 
 import Modal from "react-modal";
 import TinderCard from 'react-tinder-card'
@@ -88,14 +89,9 @@ const Explore = () => {
         }
     }
 
-    if (!user) {
-        return <Redirect to="/" />;
-    }
-
     return (
         <div className="user_main_container">
-            <Navbar />
-
+            {/* <Navbar /> */}
             <Modal className="modal quotes_collections" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                 <h1>Save this quote to a collection!</h1>
                 {collectionsArr.reverse().map(collection => (

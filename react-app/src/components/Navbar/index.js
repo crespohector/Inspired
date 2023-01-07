@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from "../../store/session";
@@ -8,6 +8,7 @@ import inspiredLogo from '../../images/inspiredText.png';
 import "./UserNavbar.css";
 
 const UserNavBar = () => {
+    const [toggle, setToggle] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
@@ -23,8 +24,13 @@ const UserNavBar = () => {
         history.push('/')
     }
 
+    const toggleDropDownMenu = () => {
+        if (!toggle) setToggle(true);
+        else setToggle(false);
+    }
+
     return (
-        <div className="UserNavBar">
+        <nav className="UserNavBar">
             <div className="UserNavBar-wrapper_img_about">
                 <div onClick={handleClick} className="UserNavBar-img">
                     <img src={inspiredLogo} alt="inspired logo"></img>
@@ -34,11 +40,26 @@ const UserNavBar = () => {
                 </div>
             </div>
             {user ? <Profile /> :
-                <div className="navbar-wrapper_demo_login">
-                    <button onClick={demoLogin} className="demo_user">Demo User</button>
-                    <NavLink to="/login" exact={true} className="login_btn"> Login </NavLink>
-                </div>}
-        </div>
+                <>
+                    {/* Display hamburger menu if screen is less than 425px */}
+                    <div className="dropdown">
+                        <button onClick={toggleDropDownMenu} className="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        {toggle &&
+                            (<div className="toggle-menu">
+                                <NavLink className="menu-item" to="/about">About</NavLink>
+                                <NavLink to="/login" exact={true} className="menu-item">Login</NavLink>
+                                <button onClick={demoLogin} className="menu-item">Demo User</button>
+                            </div>)}
+                    </div>
+
+                    {/* Display if screen is > than 425px */}
+                    <div className="navbar-wrapper_demo_login">
+                        <button onClick={demoLogin} className="demo_user">Demo User</button>
+                        <NavLink to="/login" exact={true} className="login_btn"> Login </NavLink>
+                    </div>
+                </>
+            }
+        </nav>
     );
 }
 

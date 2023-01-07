@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import Modal from "react-modal";
 import { getCollections, editCollection, deleteCollection } from '../../store/collection';
 import { getCollectionQuotes, removeQuote } from '../../store/collection_quote';
-import Navbar from '../Navbar';
 import Footer from '../SplashPage/Footer';
 import CreateCollectionBtn from './CreateCollectionBtn';
 
@@ -67,7 +66,6 @@ function Collection() {
 
   return (
     <div>
-      <Navbar />
       <div className="collection-body_content" id="scrollbar">
         <Modal className="modal collections" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <form onSubmit={onSubmit} className="was-validated form">

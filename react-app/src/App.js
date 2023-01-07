@@ -13,6 +13,7 @@ import Quote from "./components/Quote"
 import SplashPage from './components/SplashPage';
 import About from './components/About'
 import Explore from './components/Explore';
+import Navbar from "./components/Navbar";
 
 import "./components/Modals/modal.css";
 
@@ -25,7 +26,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Switch>
         <Route path="/" exact={true} >
           <SplashPage />
@@ -50,24 +52,21 @@ function App() {
         <Route path="/about" exact={true}>
           <About />
         </Route>
-        <Route path="/explore" exact={true}>
+        <ProtectedRoute path="/explore" exact={true}>
           <Explore />
-        </Route>
-        <ProtectedRoute path="/users/:userId" exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path="/users" exact={true} >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId/quotes" exact={true} >
           <Quote />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId/favorites" exact={true} >
-        <Favorite />
+          <Favorite />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId/collections" exact={true} >
-        <Collection />
+          <Collection />
         </ProtectedRoute>
-        {/* <Route path="/test" exact={true}>
-          <TestApiRoutes />
-        </Route> */}
         <Route>
           <h1>Page not found</h1>
         </Route>

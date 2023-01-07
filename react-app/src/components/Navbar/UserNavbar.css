@@ -116,16 +116,9 @@
     right: 4px;
     z-index: 1;
     width: 150px;
-}
 
-
-.profile-dropdown {
     display: flex;
     flex-direction: column;
-}
-
-.links:hover {
-    background-color: rgb(218, 216, 216);
 }
 
 #my_profile_explore {
@@ -144,4 +137,51 @@
     font-size: 1.1em;
     color:rgb(0, 0, 0);
     font-weight: 400;
+}
+
+.links:hover {
+    background-color: rgb(218, 216, 216);
+}
+
+@media screen and (max-width: 425px) {
+    .UserNavBar-about, .navbar-wrapper_demo_login {
+        display: none;
+    }
+
+    .toggle-menu {
+        background-color: white;
+        border-radius: 4px;
+        position: absolute;
+        top: 38px;
+        right: 2px;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+
+        list-style: none;
+        text-align: left;
+    }
+
+    .menu-item {
+        padding: 5px 1px 5px 5px;
+        display: block;
+        text-decoration: none;
+        font-size: 1.1em;
+        color:rgb(0, 0, 0);
+        font-weight: 400;
+
+        background-color: transparent;
+        border: none;
+    }
+
+    .menu-item:hover {
+        background-color: rgb(218, 216, 216);
+    }
+}
+
+@media screen and (min-width: 426px) {
+    .dropdown{
+        display: none;
+    }
 }
