@@ -14,7 +14,7 @@ const SplashPage = () => {
 
     return (
         <div className="main_container">
-            <div className="body_container">
+            <div className="message-container">
                 <p className="header-1">
                     Empower yourself by verbally affirming your goals and ambitions
                 </p>

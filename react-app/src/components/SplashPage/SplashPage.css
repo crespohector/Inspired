@@ -1,18 +1,18 @@
 .main_container {
     background-image: url(../../images/backgroundImg.jpg);
-    height: 100vh;
+    height: 95vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
 
     position: relative;
+    top: 0px;
 }
 
-.body_container {
-    /* border: 1px solid blue; */
+.message-container {
     text-align: center;
     margin: auto;
-    margin-top: 10%;
     max-width: 800px;
     background-color: whitesmoke;
     opacity: .92;
@@ -47,7 +47,6 @@
     font-size: 0.8em;
     color: #000000;
     font-weight: normal;
-    margin: 0px 0px 30px 0px;
 }
 
 .sign_up {
