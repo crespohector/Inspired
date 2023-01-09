@@ -61,16 +61,20 @@ const SignUpForm = () => {
               value={username}
               placeholder="User Name"
               className="sign_up-username"
+              required
+              maxLength={30}
             ></input>
           </div>
           <div>
             <input
-              type="text"
+              type="email"
               name="email"
               onChange={updateEmail}
               value={email}
               placeholder="Email"
               className="sign_up-email"
+              required
+              maxLength={100}
             ></input>
           </div>
           <div>
@@ -81,6 +85,9 @@ const SignUpForm = () => {
               value={password}
               placeholder="Password"
               className="sign_up-password"
+              required
+              minLength={5}
+              maxLength={50}
             ></input>
           </div>
           <div>
@@ -92,6 +99,8 @@ const SignUpForm = () => {
               required={true}
               placeholder="Repeat Password"
               className="sign_up-repeat_password"
+              minLength={5}
+              maxLength={50}
             ></input>
           </div>
           <div>

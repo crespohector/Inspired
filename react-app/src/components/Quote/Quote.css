@@ -13,6 +13,15 @@
     position: relative;
 }
 
+.create_btn {
+    background-color: #d8ebb5;
+    border: 1px solid #b6c79a;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    float: left;
+}
+
 #scrollbar::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);

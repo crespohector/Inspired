@@ -56,11 +56,13 @@ const LoginForm = () => {
             </div> */}
             <input
               name="email"
-              type="text"
+              type="email"
               placeholder="Email"
               value={email}
               onChange={updateEmail}
               className="email"
+              required
+              maxLength={100}
             />
           </div>
           <div>
@@ -74,6 +76,9 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
               className="password"
+              required
+              minLength={5}
+              maxLength={50}
             />
             <div>
               <button type="submit" className="submit">Login</button>
