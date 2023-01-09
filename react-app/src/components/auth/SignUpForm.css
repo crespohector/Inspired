@@ -12,8 +12,9 @@
 
 .sign_up-content {
     background-color: white;
-    padding: 40px;
-    width: 30%;
+    width: 34%;
+    padding: 30px 0px;
+    border-radius: 2px;
 }
 
 .sign_up-username,
@@ -21,14 +22,14 @@
 .sign_up-password,
 .sign_up-repeat_password,
 .sign_up-submit {
-     margin: 6px 0px;
+     margin: 8px 0px;
 }
 
 .sign_up-username,
 .sign_up-email,
 .sign_up-password,
 .sign_up-repeat_password {
-    width: 80%;
+    width: 70%;
     background-color: #e2e0e0;
     border: 1px solid #f1f1f1;
     font-size: 1em;
@@ -43,7 +44,7 @@
     cursor: pointer;
     border: 1px solid rgb(2, 128, 39);
     padding: 6px 12px;
-    width: 80%;
+    width: 70%;
     margin-bottom: 20px;
 }
 
@@ -56,4 +57,20 @@
     font-family:Arial, Helvetica, sans-serif;
     text-decoration: none;
     color: #c84b31;
+}
+
+@media  screen and (max-width: 425px) {
+
+    .sign_up-content {
+        width: 86%;
+    }
+
+}
+
+@media  screen and (min-width: 426px) and (max-width: 768px) {
+
+    .sign_up-content {
+        width: 60%;
+    }
+
 }

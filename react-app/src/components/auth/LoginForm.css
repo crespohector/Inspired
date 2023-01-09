@@ -1,7 +1,7 @@
 .login_main_container {
     display: flex;
     background-color: #88be68;
-    min-height: 100vh;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -12,19 +12,20 @@
 
 .content {
      background-color: white;
-     padding: 40px;
-     width: 30%;
+     width: 34%;
+     padding: 30px 0px;
+     border-radius: 2px;
  }
 
  .email,
  .password,
  .submit {
-     margin: 6px 0px;
+     margin: 8px 0px;
  }
 
  .email,
  .password {
-     width: 80%;
+     width: 70%;
      background-color: #e2e0e0;
      border: 1px solid #f1f1f1;
      font-size: 1em;
@@ -34,12 +35,12 @@
 .submit {
     background-color: #61b15a;
     color: white;
-    border-radius: 2px;
+    border-radius: 4px;
     font-size: 20px;
     cursor: pointer;
     border: 1px solid rgb(2, 128, 39);
     padding: 6px 12px;
-    width: 80%;
+    width: 70%;
     margin-bottom: 20px;
 }
 
@@ -48,12 +49,12 @@
 }
 
 .register_span {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-family:Arial, Helvetica, sans-serif;
 }
 
 .register_link {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-family:Arial, Helvetica, sans-serif;
     text-decoration: none;
     color: #c84b31;
@@ -61,4 +62,22 @@
 
 .logo {
     cursor: pointer;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+@media  screen and (max-width: 425px) {
+
+    .content {
+        width: 86%;
+    }
+
+}
+
+@media  screen and (min-width: 426px) and (max-width: 768px) {
+
+    .content {
+        width: 60%;
+    }
+
 }

@@ -70,7 +70,7 @@
     padding: 0px 0px 0px 10px;
     grid-column: 1 / 2;
     grid-row: 1/2;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .quote-body_content-content_option {

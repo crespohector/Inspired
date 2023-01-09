@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from "react-modal";
 import { createQuote } from '../../store/quote';
 
@@ -8,15 +7,16 @@ import { createQuote } from '../../store/quote';
 Modal.setAppElement('#root');
 
 function CreateQuoteBtn() {
-    const { userId } = useParams();
     const dispatch = useDispatch();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [content, setContent] = useState('');
     const [author, setAuthor] = useState('');
+    const user = useSelector(state => state.session.user);
+
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createQuote(content, author, userId));
+        dispatch(createQuote(content, author, user.id));
         setContent('');
         setAuthor('');
         setModalIsOpen(false)
