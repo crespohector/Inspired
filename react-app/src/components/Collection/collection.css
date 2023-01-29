@@ -1,8 +1,6 @@
 .collection-body_content {
-    width: 70%;
-    height: 32em;
+    height: 90vh;
     margin: auto;
-    margin-top: 2%;
     text-align: center;
     padding: 20px 1px 2px;
     border-radius: 6px;
@@ -11,7 +9,6 @@
     overflow:auto;
 
     position: relative;
-
 }
 
 #scrollbar::-webkit-scrollbar-track
@@ -73,6 +70,7 @@
     grid-column: 1 / 2;
     grid-row: 1/2;
     word-break: break-word;
+    font-size: 1.2em;
 }
 
 .collection-body_content-content_option {
