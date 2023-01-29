@@ -5,10 +5,12 @@ import { getCollections, editCollection, deleteCollection } from '../../store/co
 import { getCollectionQuotes, removeQuote } from '../../store/collection_quote';
 import Footer from '../SplashPage/Footer';
 import CreateCollectionBtn from './CreateCollectionBtn';
+import IsLoading from "../IsLoading";
 
 import "./collection.css";
 
 function Collection() {
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [collectionId, setCollectionId] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -48,15 +50,19 @@ function Collection() {
     if (e.target.id === "fas_fa_edit") {
       return;
     }
+    setLoading(true);
     setSecondModalIsOpen(true);
-    setCollectionId(collection.id)
-    dispatch(getCollectionQuotes(collection.id))
+    setTimeout(() => {
+      dispatch(getCollectionQuotes(collection.id))
+        .then(() => setLoading(false));
+    }, 300)
   }
 
   const onClickDeleteColQuote = (quote) => {
     const quoteId = quote.id;
     dispatch(removeQuote(collectionId, quoteId));
   }
+
 
   return (
     <div>
@@ -72,14 +78,18 @@ function Collection() {
         </Modal>
 
         <Modal className="modal quotes_collections" isOpen={secondModalIsOpen} onRequestClose={() => setSecondModalIsOpen(false)}>
-          <h2>All my quotes in a collection!</h2>
-          {collection_quotes_arr.reverse().map(quote => (
-            <div key={quote.id} className="favorite-body_content-content">
-              <div className="favorite-body_content-content_favorite">{quote.content}</div>
-              <div className="favorite-body_content-content_option" onClick={() => onClickDeleteColQuote(quote)}><i className="fas fa-minus-circle"></i></div>
-              <div className="favorite-body_content-content_author">- {quote.author}</div>
-            </div>
-          ))}
+          {loading ? <IsLoading />
+            : <>
+              <h2>All my quotes in a collection!</h2>
+              {collection_quotes_arr.reverse().map(quote => (
+                <div key={quote.id} className="favorite-body_content-content">
+                  <div className="favorite-body_content-content_favorite">{quote.content}</div>
+                  <div className="favorite-body_content-content_option" onClick={() => onClickDeleteColQuote(quote)}><i className="fas fa-minus-circle"></i></div>
+                  <div className="favorite-body_content-content_author">- {quote.author}</div>
+                </div>
+              ))}
+            </>
+          }
         </Modal>
 
         <CreateCollectionBtn />

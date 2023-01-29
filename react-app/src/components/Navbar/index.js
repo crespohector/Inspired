@@ -41,7 +41,7 @@ const UserNavBar = () => {
             </div>
             {user ? <Profile /> :
                 <>
-                    {/* Display hamburger menu if screen is less than 425px */}
+                    {/* Display dropdown menu if screen is less than 425px */}
                     <div className="dropdown">
                         <button onClick={toggleDropDownMenu} className="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                         {toggle &&

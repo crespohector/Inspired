@@ -30,6 +30,7 @@ const Explore = () => {
         dispatch(getFavorites(user?.id))
     }, [dispatch])
 
+    // Check all the favorite quotes. Only display all the quotes that are not favorited in the card stack.
     if (favoritesArr.length) {
         for (let i = 0; i < quotesArr.length; i++) {
             let bool = true;
