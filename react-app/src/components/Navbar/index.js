@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from "../../store/session";
 
@@ -9,7 +9,6 @@ import "./UserNavbar.css";
 
 const UserNavBar = () => {
     const [toggle, setToggle] = useState(false);
-    const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
 
@@ -20,10 +19,6 @@ const UserNavBar = () => {
         await dispatch(login(email, password));
     }
 
-    const handleClick = () => {
-        history.push('/')
-    }
-
     const toggleDropDownMenu = () => {
         if (!toggle) setToggle(true);
         else setToggle(false);
@@ -32,9 +27,9 @@ const UserNavBar = () => {
     return (
         <nav className="UserNavBar">
             <div className="UserNavBar-wrapper_img_about">
-                <div onClick={handleClick} className="UserNavBar-img">
-                    <img src={inspiredLogo} alt="inspired logo"></img>
-                </div>
+                <NavLink to="/" className="UserNavBar-img">
+                    <img src={inspiredLogo} alt="inspired logo" />
+                </NavLink>
                 <div className="UserNavBar-about">
                     <NavLink className="about_link" to="/about">About</NavLink>
                 </div>
