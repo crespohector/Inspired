@@ -1,5 +1,5 @@
 # Welcome to Inspired!
-## Live Link: https://inspired-wq6h.onrender.com/
+## Live Link: https://inspired-goc1.onrender.com
 Whether you're overcoming obstacles in life, need an extra push to get stuff done, or enjoy sharing postive quotes with your friends, Inspired is here to help!
 Inspired is an app where users can swipe to like or dislike daily quotes and create collections to store their favorite quotes.
 
